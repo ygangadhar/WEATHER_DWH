@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "WEATHER_ETL", "WEATHER_ETL.dtproj", "{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|Default.ActiveCfg = Development
+		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BA22752-BFE9-418D-BC79-93FE49B47179}
+	EndGlobalSection
+EndGlobal
