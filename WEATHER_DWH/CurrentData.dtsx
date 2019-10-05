@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="CurrentData"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{BCF26F98-6C3D-45D9-BC6E-AC8666121453}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{4E5AB6EE-6FAF-446C-8F1B-589DDB738767}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -23,15 +23,14 @@
       DTS:Namespace="User"
       DTS:ObjectName="CitiIDsList">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">2644605,2650497,2650629,2657789,4608147,7299942</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{25319ABF-4C4E-40EE-B5C8-4F8FFA5E51A6}"
+      DTS:DTSID="{B5CFB3B8-4843-4737-8BC1-51465BA48561}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="CurrentData_OWM_URL">
+      DTS:ObjectName="Current_URL">
       <DTS:VariableValue
         DTS:DataType="8">https://api.openweathermap.org/data/2.5/group?id=</DTS:VariableValue>
     </DTS:Variable>
@@ -52,11 +51,379 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT - Load Current Data\Script Component"
+              refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLEDB_Dest - Load Stagging_CurrentData"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Staging].[CurrentData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Connections[OleDbConnection]"
+                  connectionManagerID="{2F0B9ABE-B0F6-4174-9360-6F341960A908}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WeatherDWH_DBConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[CountryCode]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="CountryCode"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[TimeZone]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="TimeZone"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[TimeZone]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TimeZone]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Sunrise]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Sunrise"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Sunrise]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunrise]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Sunset]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Sunset"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Sunset]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunset]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Cnt]"
+                      cachedDataType="i4"
+                      cachedName="Cnt"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Cnt]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cnt]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WeatherID]"
+                      cachedDataType="i4"
+                      cachedName="WeatherID"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherID]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WeatherMain]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="WeatherMain"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherMain]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherMain]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WeatherIcon]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="WeatherIcon"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherIcon]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherIcon]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Pressure]"
+                      cachedDataType="i4"
+                      cachedName="Pressure"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Pressure]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Pressure]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Humidity]"
+                      cachedDataType="i4"
+                      cachedName="Humidity"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Humidity]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Humidity]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Visibility]"
+                      cachedDataType="i4"
+                      cachedName="Visibility"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Visibility]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Visibility]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WindSpeed]"
+                      cachedDataType="decimal"
+                      cachedName="WindSpeed"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WindSpeed]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindSpeed]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WindDeg]"
+                      cachedDataType="decimal"
+                      cachedName="WindDeg"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WindDeg]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindDeg]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[CitiID]"
+                      cachedDataType="i4"
+                      cachedName="CitiID"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CityID]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[CitiName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="CitiName"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiName]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[WeatherDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="WeatherDescription"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherDesc]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherDescription]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Temparature]"
+                      cachedDataType="decimal"
+                      cachedName="Temparature"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temperature]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Temparature]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[TempMin]"
+                      cachedDataType="decimal"
+                      cachedName="TempMin"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temp_Min]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMin]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[TempMax]"
+                      cachedDataType="decimal"
+                      cachedName="TempMax"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temp_Max]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMax]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[Cloudiness]"
+                      cachedDataType="i4"
+                      cachedName="Cloudiness"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Cloudniess]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cloudiness]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].Columns[CalculatedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="CalculatedDate"
+                      externalMetadataColumnId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CalulatedDateTime]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CalculatedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CityID]"
+                      dataType="i4"
+                      name="CityID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="60"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="wstr"
+                      length="16"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="wstr"
+                      length="16"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      dataType="wstr"
+                      length="2"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[TimeZone]"
+                      dataType="wstr"
+                      length="16"
+                      name="TimeZone" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Sunrise]"
+                      dataType="wstr"
+                      length="12"
+                      name="Sunrise" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Sunset]"
+                      dataType="wstr"
+                      length="12"
+                      name="Sunset" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Cnt]"
+                      dataType="i4"
+                      name="Cnt" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherID]"
+                      dataType="i4"
+                      name="WeatherID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherMain]"
+                      dataType="wstr"
+                      length="60"
+                      name="WeatherMain" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherDesc]"
+                      dataType="wstr"
+                      length="100"
+                      name="WeatherDesc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WeatherIcon]"
+                      dataType="wstr"
+                      length="10"
+                      name="WeatherIcon" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temperature]"
+                      dataType="numeric"
+                      name="Temperature"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Pressure]"
+                      dataType="i2"
+                      name="Pressure" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Humidity]"
+                      dataType="i2"
+                      name="Humidity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temp_Min]"
+                      dataType="numeric"
+                      name="Temp_Min"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Temp_Max]"
+                      dataType="numeric"
+                      name="Temp_Max"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Visibility]"
+                      dataType="i4"
+                      name="Visibility" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WindSpeed]"
+                      dataType="wstr"
+                      length="6"
+                      name="WindSpeed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[WindDeg]"
+                      dataType="numeric"
+                      name="WindDeg"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[Cloudniess]"
+                      dataType="i2"
+                      name="Cloudniess" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[CalulatedDateTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="CalulatedDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input].ExternalColumns[InsertedDateTime]"
+                      dataType="dbTimeStamp"
+                      name="InsertedDateTime" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
-              name="Script Component"
+              name="SCR - Extract Current Data from OWM API"
               version="11">
               <properties>
                 <property
@@ -66,127 +433,7 @@
                   name="SourceCode"
                   state="cdata">
                   <arrayElements
-                    arrayElementCount="30">
-                    <arrayElement
-                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services component wrapper
-*  This module defines the base class for your component
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-
-public class UserComponent: ScriptComponent
-{
-    public Connections Connections;
-    public Variables Variables;
-    public UserComponent()
-    {
-        Connections = new Connections(this);
-        Variables = new Variables(this);
-    }
-
-    public Output0Buffer Output0Buffer;
-
-    public virtual void FinishOutputs()
-    {
-    }
-
-    private void MarkOutputsFinished()
-    {
-
-        if (null != Output0Buffer)
-        {
-            Output0Buffer.SetEndOfRowset();
-            Output0Buffer = null;
-        }
-
-    }
-
-    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
-    {
-       for(int Idx = 0; Idx < Outputs; Idx++)
-       {
-            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
-            {
-                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
-            }
-        }
-
-        CreateNewOutputRows();
-
-        FinishOutputs();
-        MarkOutputsFinished();
-
-    }
-
-    public virtual void CreateNewOutputRows()
-    {
-    }
-
-}
-
-public class Connections
-{
-    ScriptComponent ParentComponent;
-
-    public Connections(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-}
-
-public class Variables
-{
-    ScriptComponent ParentComponent;
-
-    public Variables(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-    public String APIKey
-    {
-        get
-        {
-            return (String)(ParentComponent.ReadOnlyVariables["APIKey"].GetValueWithContext(ScriptComponent.EvaluatorContext));
-        }
-    }
-
-    public String CitiIDsList
-    {
-        get
-        {
-            return (String)(ParentComponent.ReadOnlyVariables["CitiIDsList"].GetValueWithContext(ScriptComponent.EvaluatorContext));
-        }
-    }
-
-    public String CurrentDataOWMURL
-    {
-        get
-        {
-            return (String)(ParentComponent.ReadOnlyVariables["CurrentData_OWM_URL"].GetValueWithContext(ScriptComponent.EvaluatorContext));
-        }
-    }
-
-    public String Units
-    {
-        get
-        {
-            return (String)(ParentComponent.ReadOnlyVariables["Units"].GetValueWithContext(ScriptComponent.EvaluatorContext));
-        }
-    }
-
-}
-]]></arrayElement>
+                    arrayElementCount="33">
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
                     <arrayElement
@@ -324,7 +571,9 @@ public class Variables
 
 #region Namespaces
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Web.Script.Serialization;
 using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 #endregion
@@ -424,38 +673,114 @@ public class ScriptMain : UserComponent
           Add rows by calling the AddRow method on the member variable named "<Output Name>Buffer".
           For example, call MyOutputBuffer.AddRow() if your output was named "MyOutput".
         */
-
-        var currentDataOWMUrl = Variables.CurrentDataOWMURL;
-        var cityIDsList = Variables.CitiIDsList;
+        var currentUrl = Variables.CurrentURL;
+        var citiIdsList = Variables.CitiIDsList;
         var units = Variables.Units;
-        var aPIKey = Variables.APIKey;
+        var apiKey = Variables.APIKey;
 
         //Set URL for the location 
-        var aPIUrl = currentDataOWMUrl + cityIDsList + "&units=" + units + "&appkey=" + aPIKey;
+        var apiUrl = currentUrl + citiIdsList + "&units=" + units + "&appid=" + apiKey;
 
-        //Read file from JSON
+        //Read file from web
+        var textFromFile = (new System.Net.WebClient()).DownloadString(apiUrl);
+
+        var data = new JavaScriptSerializer().Deserialize<RootObject>(textFromFile);
         
-
-        foreach (var line in lines)
+        foreach (var item in data.list)
         {
-            //read the data from each line and filter empty spaces
-            var values = line.Split(' ').Where(str => !string.IsNullOrEmpty(str)).ToList();
-            Output0Buffer.AddRow();
-            Output0Buffer.CitiSK = citiSK;
-            Output0Buffer.CitiID = citiID;
-            Output0Buffer.CitiName = location;
-            Output0Buffer.Year = Convert.ToInt32(values[0]);
-            Output0Buffer.Month = Convert.ToInt32(values[1]);
-            Output0Buffer.TMax = GetStringValue(values[2]);
-            Output0Buffer.TMin = GetStringValue(values[3]);
-            Output0Buffer.AFDays = GetStringValue(values[4]);
-            Output0Buffer.RainFall = GetStringValue(values[5]);
-            Output0Buffer.SunHours = GetStringValue(values[6]);
+            foreach (var weather in item.weather)
+            {
+                Output0Buffer.AddRow();
+                Output0Buffer.CitiID = item.sys.id;
+                Output0Buffer.CitiName = item.name;
+                Output0Buffer.Latitude = item.coord.lat;
+                Output0Buffer.Longitude = item.coord.lon;
+                Output0Buffer.CountryCode = item.sys.country;
+                Output0Buffer.Sunrise = item.sys.sunrise;
+                Output0Buffer.Sunset = item.sys.sunset;
+                Output0Buffer.Cnt = data.cnt;
+                Output0Buffer.WeatherID = weather.id;
+                Output0Buffer.WeatherMain = weather.main;
+                Output0Buffer.WeatherDescription = weather.description;
+                Output0Buffer.WeatherIcon = weather.icon;
+                Output0Buffer.Temparature = item.main.temp;
+                Output0Buffer.Pressure = item.main.pressure;
+                Output0Buffer.Humidity = item.main.humidity;
+                Output0Buffer.TempMin = item.main.temp_min;
+                Output0Buffer.TempMax = item.main.temp_max;
+                Output0Buffer.Visibility = item.visibility;
+                Output0Buffer.WindSpeed = item.wind.speed;
+                Output0Buffer.WindDeg = item.wind.deg;
+                Output0Buffer.Cloudiness = item.clouds.all;
+                Output0Buffer.CalculatedDate = item.dt;
 
+            }
+            
         }
     }
-}
+    public class Coord
+    {
+        public string lon { get; set; }
+        public string lat { get; set; }
+    }
 
+    public class Sys
+    {
+        public int type { get; set; }
+        public int id { get; set; }
+        public double message { get; set; }
+        public string country { get; set; }
+        public string sunrise { get; set; }
+        public string sunset { get; set; }
+    }
+
+    public class Weather
+    {
+        public int id { get; set; }
+        public string main { get; set; }
+        public string description { get; set; }
+        public string icon { get; set; }
+    }
+
+    public class Main
+    {
+        public decimal temp { get; set; }
+        public int pressure { get; set; }
+        public int humidity { get; set; }
+        public decimal temp_min { get; set; }
+        public decimal temp_max { get; set; }
+    }
+
+    public class Wind
+    {
+        public decimal speed { get; set; }
+        public decimal deg { get; set; }
+    }
+
+    public class Clouds
+    {
+        public int all { get; set; }
+    }
+
+    public class WeatherData
+    {
+        public Coord coord { get; set; }
+        public Sys sys { get; set; }
+        public List<Weather> weather { get; set; }
+        public Main main { get; set; }
+        public int visibility { get; set; }
+        public Wind wind { get; set; }
+        public Clouds clouds { get; set; }
+        public string dt { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+    public class RootObject
+    {
+        public int cnt { get; set; }
+
+        public List<WeatherData> list { get; set; }
+    }
 }
 ]]></arrayElement>
                     <arrayElement
@@ -527,14 +852,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String CountryCode
+    public String Latitude
     {
         set
         {
             this[2] = value;
         }
     }
-    public bool CountryCode_IsNull
+    public bool Latitude_IsNull
     {
         set
         {
@@ -549,14 +874,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String Latitude
+    public String Longitude
     {
         set
         {
             this[3] = value;
         }
     }
-    public bool Latitude_IsNull
+    public bool Longitude_IsNull
     {
         set
         {
@@ -571,14 +896,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String Longitude
+    public String CountryCode
     {
         set
         {
             this[4] = value;
         }
     }
-    public bool Longitude_IsNull
+    public bool CountryCode_IsNull
     {
         set
         {
@@ -659,14 +984,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String WeatherID
+    public Int32 Cnt
     {
         set
         {
             this[8] = value;
         }
     }
-    public bool WeatherID_IsNull
+    public bool Cnt_IsNull
     {
         set
         {
@@ -681,14 +1006,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String WeatherMain
+    public Int32 WeatherID
     {
         set
         {
             this[9] = value;
         }
     }
-    public bool WeatherMain_IsNull
+    public bool WeatherID_IsNull
     {
         set
         {
@@ -703,14 +1028,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String WeatherDesc
+    public String WeatherMain
     {
         set
         {
             this[10] = value;
         }
     }
-    public bool WeatherDesc_IsNull
+    public bool WeatherMain_IsNull
     {
         set
         {
@@ -725,14 +1050,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String WeatherIcon
+    public String WeatherDescription
     {
         set
         {
             this[11] = value;
         }
     }
-    public bool WeatherIcon_IsNull
+    public bool WeatherDescription_IsNull
     {
         set
         {
@@ -747,14 +1072,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Decimal Temperaturue
+    public String WeatherIcon
     {
         set
         {
             this[12] = value;
         }
     }
-    public bool Temperaturue_IsNull
+    public bool WeatherIcon_IsNull
     {
         set
         {
@@ -769,14 +1094,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 Pressure
+    public Decimal Temparature
     {
         set
         {
             this[13] = value;
         }
     }
-    public bool Pressure_IsNull
+    public bool Temparature_IsNull
     {
         set
         {
@@ -791,14 +1116,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Decimal TempMin
+    public Int32 Pressure
     {
         set
         {
             this[14] = value;
         }
     }
-    public bool TempMin_IsNull
+    public bool Pressure_IsNull
     {
         set
         {
@@ -813,14 +1138,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Decimal TempMax
+    public Int32 Humidity
     {
         set
         {
             this[15] = value;
         }
     }
-    public bool TempMax_IsNull
+    public bool Humidity_IsNull
     {
         set
         {
@@ -835,14 +1160,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 Visibiity
+    public Decimal TempMin
     {
         set
         {
             this[16] = value;
         }
     }
-    public bool Visibiity_IsNull
+    public bool TempMin_IsNull
     {
         set
         {
@@ -857,14 +1182,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Decimal WindSpeed
+    public Decimal TempMax
     {
         set
         {
             this[17] = value;
         }
     }
-    public bool WindSpeed_IsNull
+    public bool TempMax_IsNull
     {
         set
         {
@@ -879,14 +1204,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 WindDeg
+    public Int32 Visibility
     {
         set
         {
             this[18] = value;
         }
     }
-    public bool WindDeg_IsNull
+    public bool Visibility_IsNull
     {
         set
         {
@@ -901,14 +1226,14 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String Cloudiness
+    public Decimal WindSpeed
     {
         set
         {
             this[19] = value;
         }
     }
-    public bool Cloudiness_IsNull
+    public bool WindSpeed_IsNull
     {
         set
         {
@@ -923,20 +1248,64 @@ public class Output0Buffer: ScriptBuffer
         }
     }
 
-    public String Date
+    public Decimal WindDeg
     {
         set
         {
             this[20] = value;
         }
     }
-    public bool Date_IsNull
+    public bool WindDeg_IsNull
     {
         set
         {
             if (value)
             {
                 SetNull(20);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Cloudiness
+    {
+        set
+        {
+            this[21] = value;
+        }
+    }
+    public bool Cloudiness_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(21);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String CalculatedDate
+    {
+        set
+        {
+            this[22] = value;
+        }
+    }
+    public bool CalculatedDate_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(22);
             }
             else
             {
@@ -963,6 +1332,126 @@ public class Output0Buffer: ScriptBuffer
 }
 ]]></arrayElement>
                     <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String APIKey
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["APIKey"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String CitiIDsList
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["CitiIDsList"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String CurrentURL
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["Current_URL"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String Units
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["Units"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
                       dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
@@ -976,10 +1465,10 @@ public class Output0Buffer: ScriptBuffer
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Settings.get_Default():SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Sett" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Settings.get_Default():SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Sett" +
     "ings")]
 
-namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
+namespace SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties {
     
     
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -996,7 +1485,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
 }
 ]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.csproj]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_c7a065bb6a644cc4b6959cd6b4c5300c.csproj]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
@@ -1008,11 +1497,11 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{46C469A7-AF5E-4C2B-BD4B-4DE780138486}</ProjectGuid>
+    <ProjectGuid>{DFBDEB16-1293-4E57-8AA0-13AB42A2A5BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC_a1154b2ee42d4f9c848eed1e6bb3a1cf</RootNamespace>
-    <AssemblyName>SC_a1154b2ee42d4f9c848eed1e6bb3a1cf</AssemblyName>
+    <RootNamespace>SC_c7a065bb6a644cc4b6959cd6b4c5300c</RootNamespace>
+    <AssemblyName>SC_c7a065bb6a644cc4b6959cd6b4c5300c</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
@@ -1040,6 +1529,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -1095,17 +1585,17 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
   <msb:PropertyGroup>
-    <msb:CodeName>SC_a1154b2ee42d4f9c848eed1e6bb3a1cf</msb:CodeName>
+    <msb:CodeName>SC_c7a065bb6a644cc4b6959cd6b4c5300c</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
-    <msb:DisplayName>SC_a1154b2ee42d4f9c848eed1e6bb3a1cf</msb:DisplayName>
-    <msb:ProjectId>{97BBF49E-B013-4CF4-9E57-BF3683A50631}</msb:ProjectId>
+    <msb:DisplayName>SC_c7a065bb6a644cc4b6959cd6b4c5300c</msb:DisplayName>
+    <msb:ProjectId>{41173A89-B590-4406-B5F3-3CE8AFBE5884}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
-    <msb:Project Include="SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.csproj" />
+    <msb:Project Include="SC_c7a065bb6a644cc4b6959cd6b4c5300c.csproj" />
+    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
     <msb:File Include="main.cs" />
     <msb:File Include="BufferWrapper.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
     <msb:File Include="Properties\Resources.resx" />
@@ -1125,11 +1615,11 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("SC_a1154b2ee42d4f9c848eed1e6bb3a1cf")]
+[assembly: AssemblyTitle("SC_c7a065bb6a644cc4b6959cd6b4c5300c")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SC_a1154b2ee42d4f9c848eed1e6bb3a1cf")]
+[assembly: AssemblyProduct("SC_c7a065bb6a644cc4b6959cd6b4c5300c")]
 [assembly: AssemblyCopyright("Copyright @  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -1172,14 +1662,14 @@ using System.Runtime.CompilerServices;
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
     "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
     "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
     "):Void")]
 
-namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
+namespace SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties {
     
     
     /// <summary>
@@ -1207,7 +1697,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_c7a065bb6a644cc4b6959cd6b4c5300c.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1230,6 +1720,15 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
     }
 }
 ]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[packages.config]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Newtonsoft.Json" version="12.0.2" targetFramework="net45" />
+</packages>]]></arrayElement>
                   </arrayElements>
                 </property>
                 <property
@@ -1239,13 +1738,314 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
                   name="BinaryCode"
                   state="cdata">
                   <arrayElements
-                    arrayElementCount="0" />
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_c7a065bb6a644cc4b6959cd6b4c5300c.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAFbNmF0AAAAAAAAAAOAAIiALATAAADgAAAAIAAAAAAAAjlcA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAADxXAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAlDcAAAAgAAAAOAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAYAAAAAYAAAA6AAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAAQAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABw
+VwAAAAAAAEgAAAACAAUArCoAANgrAAABAAAAAAAAAIRWAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACiobMAQAxwIAAAEAABECewIAAARv
+QAAABgoCewIAAARvPwAABgsCewIAAARvQQAABgwCewIAAARvPgAABg0cjR0AAAElFgaiJRcHoiUY
+cgEAAHCiJRkIoiUachEAAHCiJRsJoigSAAAKEwRzEwAAChEEKBQAAAoTBXMVAAAKEQUoAQAAKxMG
+EQZvjgAABm8XAAAKEwc4HgIAABIHKBgAAAoTCBEIb3sAAAZvGQAAChMJOOYBAAASCSgaAAAKEwoC
+ewMAAARvNAAABgJ7AwAABBEIb3kAAAZvUAAABm8GAAAGAnsDAAAEEQhviQAABm8IAAAGAnsDAAAE
+EQhvdwAABm9LAAAGbwoAAAYCewMAAAQRCG93AAAGb0kAAAZvDAAABgJ7AwAABBEIb3kAAAZvVAAA
+Bm8OAAAGAnsDAAAEEQhveQAABm9WAAAGbxIAAAYCewMAAAQRCG95AAAGb1gAAAZvFAAABgJ7AwAA
+BBEGb4wAAAZvFgAABgJ7AwAABBEKb1sAAAZvGAAABgJ7AwAABBEKb10AAAZvGgAABgJ7AwAABBEK
+b18AAAZvHAAABgJ7AwAABBEKb2EAAAZvHgAABgJ7AwAABBEIb30AAAZvZAAABm8gAAAGAnsDAAAE
+EQhvfQAABm9mAAAGbyIAAAYCewMAAAQRCG99AAAGb2gAAAZvJAAABgJ7AwAABBEIb30AAAZvagAA
+Bm8mAAAGAnsDAAAEEQhvfQAABm9sAAAGbygAAAYCewMAAAQRCG9/AAAGbyoAAAYCewMAAAQRCG+B
+AAAGb28AAAZvLAAABgJ7AwAABBEIb4EAAAZvcQAABm8uAAAGAnsDAAAEEQhvgwAABm90AAAGbzAA
+AAYCewMAAAQRCG+FAAAGbzIAAAYSCSgbAAAKOg7+///eDhIJ/hYEAAAbbxwAAArcEgcoHQAACjrW
+/f//3g4SB/4WAgAAG28cAAAK3CoAQTQAAAIAAACjAAAA+QEAAJwCAAAOAAAAAAAAAAIAAACHAAAA
+MQIAALgCAAAOAAAAAAAAAB4CKDcAAAYqKgIDBAUoHgAACio6AhYDjCEAAAEoHwAACipaAywIAhYo
+IAAACipyIQAAcHMhAAAKeiYCFwMoHwAACipaAywIAhcoIAAACipyIQAAcHMhAAAKeiYCGAMoHwAA
+CipaAywIAhgoIAAACipyIQAAcHMhAAAKeiYCGQMoHwAACipaAywIAhkoIAAACipyIQAAcHMhAAAK
+eiYCGgMoHwAACipaAywIAhooIAAACipyIQAAcHMhAAAKeiYCGwMoHwAACipaAywIAhsoIAAACipy
+IQAAcHMhAAAKeiYCHAMoHwAACipaAywIAhwoIAAACipyIQAAcHMhAAAKeiYCHQMoHwAACipaAywI
+Ah0oIAAACipyIQAAcHMhAAAKejoCHgOMIQAAASgfAAAKKloDLAgCHiggAAAKKnIhAABwcyEAAAp6
+PgIfCQOMIQAAASgfAAAKKl4DLAkCHwkoIAAACipyIQAAcHMhAAAKeioCHwoDKB8AAAoqXgMsCQIf
+CiggAAAKKnIhAABwcyEAAAp6KgIfCwMoHwAACipeAywJAh8LKCAAAAoqciEAAHBzIQAACnoqAh8M
+AygfAAAKKl4DLAkCHwwoIAAACipyIQAAcHMhAAAKej4CHw0DjBIAAAEoHwAACipeAywJAh8NKCAA
+AAoqciEAAHBzIQAACno+Ah8OA4whAAABKB8AAAoqXgMsCQIfDiggAAAKKnIhAABwcyEAAAp6PgIf
+DwOMIQAAASgfAAAKKl4DLAkCHw8oIAAACipyIQAAcHMhAAAKej4CHxADjBIAAAEoHwAACipeAywJ
+Ah8QKCAAAAoqciEAAHBzIQAACno+Ah8RA4wSAAABKB8AAAoqXgMsCQIfESggAAAKKnIhAABwcyEA
+AAp6PgIfEgOMIQAAASgfAAAKKl4DLAkCHxIoIAAACipyIQAAcHMhAAAKej4CHxMDjBIAAAEoHwAA
+CipeAywJAh8TKCAAAAoqciEAAHBzIQAACno+Ah8UA4wSAAABKB8AAAoqXgMsCQIfFCggAAAKKnIh
+AABwcyEAAAp6PgIfFQOMIQAAASgfAAAKKl4DLAkCHxUoIAAACipyIQAAcHMhAAAKeioCHxYDKB8A
+AAoqXgMsCQIfFiggAAAKKnIhAABwcyEAAAp6HgIoIgAACioeAigjAAAKKh4CKCQAAAoqfgIoJQAA
+CgICczwAAAZ9AQAABAICcz0AAAZ9AgAABCoGKm4CewMAAAQsEgJ7AwAABG81AAAGAhR9AwAABCoT
+MAUASQAAAAIAABEWCisuBAaUDgRyvgAAcCgmAAAKMxkCBQaaAgQGlCgnAAAKDgRzBQAABn0DAAAE
+BhdYCgYDMs4CbzsAAAYCbzgAAAYCKDkAAAYqOgIoKAAACgIDfQQAAAQqOgIoKAAACgIDfQUAAAQq
+lgJ7BQAABG8pAAAKctAAAHBvKgAACigrAAAKbywAAAp0HQAAASqWAnsFAAAEbykAAApy3gAAcG8q
+AAAKKCsAAApvLAAACnQdAAABKpYCewUAAARvKQAACnL2AABwbyoAAAooKwAACm8sAAAKdB0AAAEq
+lgJ7BQAABG8pAAAKcg4BAHBvKgAACigrAAAKbywAAAp0HQAAASoeAigoAAAKKq5+BgAABC0echoB
+AHDQBwAAAigtAAAKby4AAApzLwAACoAGAAAEfgYAAAQqGn4HAAAEKh4CgAcAAAQqGn4IAAAEKh4C
+KDAAAAoqLnNHAAAGgAgAAAQqHgJ7CQAABCoiAgN9CQAABCoeAnsKAAAEKiICA30KAAAEKh4CewsA
+AAQqIgIDfQsAAAQqHgJ7DAAABCoiAgN9DAAABCoeAnsNAAAEKiICA30NAAAEKh4Cew4AAAQqIgID
+fQ4AAAQqHgJ7DwAABCoiAgN9DwAABCoeAnsQAAAEKiICA30QAAAEKh4CexEAAAQqIgIDfREAAAQq
+HgJ7EgAABCoiAgN9EgAABCoeAnsTAAAEKiICA30TAAAEKh4CexQAAAQqIgIDfRQAAAQqHgJ7FQAA
+BCoiAgN9FQAABCoeAnsWAAAEKiICA30WAAAEKh4CexcAAAQqIgIDfRcAAAQqHgJ7GAAABCoiAgN9
+GAAABCoeAnsZAAAEKiICA30ZAAAEKh4CexoAAAQqIgIDfRoAAAQqHgJ7GwAABCoiAgN9GwAABCoe
+AnscAAAEKiICA30cAAAEKh4Cex0AAAQqIgIDfR0AAAQqHgJ7HgAABCoiAgN9HgAABCoeAnsfAAAE
+KiICA30fAAAEKh4CeyAAAAQqIgIDfSAAAAQqHgJ7IQAABCoiAgN9IQAABCoeAnsiAAAEKiICA30i
+AAAEKh4CeyMAAAQqIgIDfSMAAAQqHgJ7JAAABCoiAgN9JAAABCoeAnslAAAEKiICA30lAAAEKh4C
+eyYAAAQqIgIDfSYAAAQqHgJ7JwAABCoiAgN9JwAABCoeAnsoAAAEKiICA30oAAAEKgAAAEJTSkIB
+AAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAKAWAAAjfgAADBcAADwQAAAjU3RyaW5ncwAA
+AABIJwAAjAEAACNVUwDUKAAAEAAAACNHVUlEAAAA5CgAAPQCAAAjQmxvYgAAAAAAAAACAAABVxWi
+CQkLAAAA+gEzABYAAAEAAAApAAAAEAAAACgAAACQAAAAWAAAADAAAABwAAAAAgAAAAwAAABVAAAA
+dgAAAAQAAAABAAAABgAAAAEAAAAIAAAAAQAAAAAA3AcBAAAAAAAGAI4GjgwGACIHjgwGANoFXgwP
+AAINAAAGAAcG0goGAHEG0goGAFIG0goGAAkH0goGAK4G0goGAMcG0goGAB4G0goGADkGhQcKAOIG
+kgQGADoAvQA7ADwMAAAGABgOAAoGAKIFjgwGAK4HAAoKALsLkgQOAKwLkgQKAFELkgQKALQOkgQG
+AL0FXgwGAMwLrgwGAEULnQoSAI0FtgcSAO4FtgcSADYFiAoGAKcHAAoSAIwOLQ4WACQMsgoGAEME
+AAoGAEEAAAoGAOQKAAoaABEA/AsaAAEA/AtbAFkPAAAaACIA/AsGAMAEAAoGAE8EAAoGAMUP0goA
+AAAARwAAAAAAAQABAAEAEAAvCgAAEAABAAEAAQAQAJ4LAABNAAEABQABABAAlg4AAFkAAQA3AAEA
+EACaDQAAQQAEADwAAQAQAEwNAABBAAUAPQAAABAAtQwRDUEABgBCAAABEAB7DRENcQAIAEYAAgAQ
+ANYDAABBAAkASQACABAA6Q0AAEEACwBOAAIAEADcCwAAQQARAFsAAgAQADUKAABBABUAZAACABAA
+vwMAAEEAGgBvAAIAEABxDAAAQQAcAHQAAgAQAIQAAABBAB0AdwACABAAFA4AAEEAJwCMAAYAmg3o
+AAYATA3sAAYAngvwAAEApA70AAEApA70ABEABwr4ABEAJgX8ABEA8AMAAQEAeQIEAQEA6gIEAQEA
+owEHAQEAMwEHAQEAdAEKAQEAcAMEAQEA0wEEAQEAEwMEAQEAMwEHAQEAFgIEAQEAXAIEAQEARgIE
+AQEAjgINAQEAuQEHAQEAiQMHAQEALAINAQEAVgMNAQEAHAENAQEA7AENAQEAAQIHAQEAXQERAQEA
+1QIVAQEApAIZAQEAFgIhAQEAowMHAQEARwElAQEAvQIpAQEA/wIEAQEAMwEHAQEAjQEEAQEAKwMH
+AQEAQAMtAVAgAAAAAMYAQAcGAAEAWCAAAAAAxgBLBwYAAQBgIAAAAADGANUNBgABAGgjAAAAAIYY
+RwwGAAEAcCMAAAAAhhhHDHsAAQB7IwAAAACGCFAAAQAEAIojAAAAAIYIBAg1AQUAoSMAAAAAhghz
+BBAABgCrIwAAAACGCIAINQEHAMIjAAAAAIYIHgQQAAgAzCMAAAAAhghsCDUBCQDjIwAAAACGCBAE
+EAAKAO0jAAAAAIYIVwg1AQsABCQAAAAAhggABBAADAAOJAAAAACGCEAINQENACUkAAAAAIYIswQQ
+AA4ALyQAAAAAhgiUCDUBDwBGJAAAAACGCE4FEAAQAFAkAAAAAIYI0wg1AREAZyQAAAAAhgg4DhAA
+EgBxJAAAAACGCIgJNQETAIgkAAAAAIYIdA4BABQAlyQAAAAAhgiaCTUBFQCuJAAAAACGCFsAAQAW
+AL4kAAAAAIYIFgg1ARcA1iQAAAAAhggfChAAGADhJAAAAACGCCYJNQEZAPkkAAAAAIYI/goQABoA
+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
+AQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBX
+BwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQDNDQAAAgBUDAAAAwCmDQAA
+BABfCwAAAQC6DgAAAQC6DgAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBX
+BwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAA
+AQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBX
+BwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwAAAQBXBwkARwwBABEARwwGABkA
+RwwKACkARwwQADEARwwQADkARwwQAEEARwwQAEkARwwQAFEARwwQAFkARwwQAGEARwwQAGkARwwG
+AIkARwwGALkARwwGANkARwwVALEAQAcGALEASwcGAOkA/Q02APEARwwGAPEAnwc8APkARwwGAPkA
+XQdBAAwAOQxUABQAxA5kABwAOQxUACQAxA5kACQAPA93AAEBcgUGABQAPA93AJkARwx7AJkA9wmF
+AJkA5gkBABEBRwwQAJkAiQ8GAJkAWQ4GAJkAXA53ALEARwwGALEAaQCPALEAag2WAIEARwwGALEA
+QA2cABkB7gmiALEAdA+pACEBRQ+vADkBYQS2ADkBwQ+/AMEARwzFAOEARwwGAC4ACwAtAi4AEwA2
+Ai4AGwBVAi4AIwBeAi4AKwCHAi4AMwCHAi4AOwCHAi4AQwBeAi4ASwCNAi4AUwCHAi4AWwCkAkMA
+YwDuAuMAcwDuAgEBawDuAiEBawDuAkEBawDuAmEBawDuAoEBawDuAqEBawDuAsEBawDuAuEBawDu
+AgECawDuAiECawDuAkECawDuAmECawDuAoECawDuAqECawDuAsECawDuAuECawDuAgEDawDuAiED
+awDuAkEDawDuAmEDawDuAoEDawDuAqEDawDuAsEDawDuAuEDawDuAgEEawDuAiEEawDuAkEEawDu
+AmEEawDuAoEEawDuAqEEawDuAsEEawDuAuEEawDuAgEFawDuAmkGewBVAokGewBVAiAJawDuAkAJ
+awDuAmAJawDuAoAJawDuAsAJawDuAuAJawDuAgAKawDuAiAKawDuAkAKawDuAmAKawDuAoAKawDu
+AqAKawDuAsAKawDuAuAKawDuAgALawDuAiALawDuAmALawDuAoALawDuAqALawDuAsALawDuAuAL
+awDuAgAMawDuAiAMawDuAkAMawDuAoAMawDuAqAMawDuAsAMawDuAuAMawDuAgANawDuAiANawDu
+AkANawDuAmANawDuAoANawDuAqANawDuAuANawDuAgAOawDuAiAOawDuAkAOawDuAoAOawDuAqAO
+awDuAuAOawDuAgAPawDuAiAPawDuAkAPawDuAmAPawDuAoAPawDuAqAPawDuAsAPawDuAuAPawDu
+AgAQawDuAiAQawDuAkAQawDuAmAQawDuAoAQawDuAqAQawDuAsAQawDuAuAQawDuAgARawDuAiAR
+awDuAkARawDuAoARawDuAqARawDuAsARawDuAuARawDuAhsAiwADAAEABgAvAAcAMwAIADUACQA2
+AAoAOAALAD4ADABCAA0ARwAOAEkADwBKABAAVAAAAFQA3gEAAAgI4gEAAHcE5gEAAIQI4gEAACIE
+5gEAAHAI4gEAABQE5gEAAFsI4gEAAAQE5gEAAEQI4gEAALcE5gEAAJgI4gEAAFIF5gEAANcI4gEA
+ADwO5gEAAIwJ4gEAAHgO3gEAAJ4J4gEAAF8A3gEAABoI4gEAACMK5gEAACoJ4gEAAAIL5gEAAFgJ
+4gEAAGoK5gEAAEEJ4gEAAAIF6gEAAMAI4gEAANsE3gEAAKwI4gEAAOoP3gEAAMAJ4gEAABcK6gEA
+ABcJ4gEAAJQP6gEAAK0J4gEAABEQ3gEAANQJ4gEAANwA6gEAAC8I4gEAAG0H6gEAAAQJ4gEAALIN
+3gEAAHYJ4gEAAH4F5gEAAOoI4gEAALoP5gEAAPEO5gEAAHkA5gEAAMEN5gEAAMwL7wEAAC4F9AEA
+AGwO+QEAAEEL5gEAABAO5gEAANIE3gEAABkB3gEAADsE/gEAAN4P5gEAAGoF5gEAAFIO5gEAABkB
+3gEAAEcK5gEAACkL5gEAAIMK5gEAAJkL6gEAAPUE3gEAAAQQ3gEAAF0K6gEAAK0P6gEAAPQA6gEA
+AIEH6gEAANgH3gEAAOoDAgIAAPkNBwIAAPQLDAIAAEcKFQIAAC8Q3gEAANEDGgIAAIcMHwIAACoO
+5gEAABkB3gEAAI0E5gEAAIgO3gEAAAoPJAIBAAYAAwABAAcABQABAAgABwABAAkACQABAAoACwAB
+AAsADQABAAwADwABAA0AEQABAA4AEwABAA8AFQABABAAFwABABEAGQABABIAGwABABMAHQABABQA
+HwABABUAIQABABYAIwABABcAJQABABgAJwABABkAKQABABoAKwABABsALQABABwALwABAB0AMQAB
+AB4AMwABAB8ANQABACAANwABACEAOQABACIAOwABACMAPQABACQAPwABACUAQQABACYAQwABACcA
+RQABACgARwABACkASQABACoASwABACsATQABACwATwABAC0AUQABAC4AUwABAC8AVQABADAAVwAB
+ADEAWQABADIAWwABADMAXQACAD4AXwACAD8AYQACAEAAYwACAEEAZQACAEMAZwACAEQAaQABAEUA
+aQACAEYAawACAEkAbQABAEoAbQACAEsAbwABAEwAbwACAE4AcQABAE8AcQACAFAAcwABAFEAcwAC
+AFIAdQABAFMAdQACAFQAdwABAFUAdwACAFYAeQABAFcAeQACAFgAewABAFkAewACAFsAfQABAFwA
+fQACAF0AfwABAF4AfwACAF8AgQABAGAAgQACAGEAgwABAGIAgwACAGQAhQABAGUAhQACAGYAhwAB
+AGcAhwACAGgAiQABAGkAiQACAGoAiwABAGsAiwACAGwAjQABAG0AjQACAG8AjwABAHAAjwACAHEA
+kQABAHIAkQACAHQAkwABAHUAkwACAHcAlQABAHgAlQACAHkAlwABAHoAlwACAHsAmQABAHwAmQAC
+AH0AmwABAH4AmwACAH8AnQABAIAAnQACAIEAnwABAIIAnwACAIMAoQABAIQAoQACAIUAowABAIYA
+owACAIcApQABAIgApQACAIkApwABAIoApwACAIwAqQABAI0AqQACAI4AqwABAI8AqwBNAF0AaQBw
+AASAAAABAAAAAAAAAAAAAAAAAJkAAAAEAAAAAAAAAAAAAADNAJAAAAAAAA4AAAAAAAAAAAAAANYA
+0A4AAAAADgAAAAAAAAAAAAAA1gAPDwAAAAAEAAAAAAAAAAAAAADNAAAKAAAAAAQAAAAAAAAAAAAA
+AN8AhA0AAAAADgAAAAAAAAAAAAAA1gBpCwAAAAAAAAAAAQAAAL8MAAAJAAIACgACAAsAAgAMAAIA
+DQACAA4AAgAPAAIAEAACAC0ASAAAAAAAAElEVFNWYXJpYWJsZTEwMABJRFRTVmFyaWFibGVzMTAw
+AElEVFNFdmFsdWF0b3JDb250ZXh0MTAwAExpc3RgMQBJbnQzMgA8TW9kdWxlPgBzZXRfQ2l0aUlE
+AHNldF9XZWF0aGVySUQAR2V0T3V0cHV0SUQAZ2V0X0N1cnJlbnRVUkwAV2VhdGhlckRhdGEAbXNj
+b3JsaWIAU0NfYzdhMDY1YmI2YTY0NGNjNGI2OTU5Y2Q2YjRjNTMwMGMAU3lzdGVtLkNvbGxlY3Rp
+b25zLkdlbmVyaWMAc2V0X1dpbmRTcGVlZABnZXRfc3BlZWQAc2V0X3NwZWVkAE1hcmtPdXRwdXRz
+RmluaXNoZWQAZ2V0X2lkAHNldF9pZAA8c3BlZWQ+a19fQmFja2luZ0ZpZWxkADxpZD5rX19CYWNr
+aW5nRmllbGQAPHdpbmQ+a19fQmFja2luZ0ZpZWxkADxjb29yZD5rX19CYWNraW5nRmllbGQAPG1l
+c3NhZ2U+a19fQmFja2luZ0ZpZWxkADxuYW1lPmtfX0JhY2tpbmdGaWVsZAA8dHlwZT5rX19CYWNr
+aW5nRmllbGQAPHByZXNzdXJlPmtfX0JhY2tpbmdGaWVsZAA8c3VucmlzZT5rX19CYWNraW5nRmll
+bGQAPGRlZz5rX19CYWNraW5nRmllbGQAPGFsbD5rX19CYWNraW5nRmllbGQAPG1haW4+a19fQmFj
+a2luZ0ZpZWxkADx0ZW1wX21pbj5rX19CYWNraW5nRmllbGQAPGljb24+a19fQmFja2luZ0ZpZWxk
+ADxkZXNjcmlwdGlvbj5rX19CYWNraW5nRmllbGQAPGxvbj5rX19CYWNraW5nRmllbGQAPHRlbXA+
+a19fQmFja2luZ0ZpZWxkADx3ZWF0aGVyPmtfX0JhY2tpbmdGaWVsZAA8Y2xvdWRzPmtfX0JhY2tp
+bmdGaWVsZAA8c3lzPmtfX0JhY2tpbmdGaWVsZAA8bGF0PmtfX0JhY2tpbmdGaWVsZAA8ZHQ+a19f
+QmFja2luZ0ZpZWxkADxzdW5zZXQ+a19fQmFja2luZ0ZpZWxkADxjbnQ+a19fQmFja2luZ0ZpZWxk
+ADxsaXN0PmtfX0JhY2tpbmdGaWVsZAA8dGVtcF9tYXg+a19fQmFja2luZ0ZpZWxkADxjb3VudHJ5
+PmtfX0JhY2tpbmdGaWVsZAA8aHVtaWRpdHk+a19fQmFja2luZ0ZpZWxkADx2aXNpYmlsaXR5Pmtf
+X0JhY2tpbmdGaWVsZABXaW5kAGdldF93aW5kAHNldF93aW5kAENvb3JkAGdldF9jb29yZABzZXRf
+Y29vcmQAZGVmYXVsdEluc3RhbmNlAHNldF9Db3VudHJ5Q29kZQBzZXRfTG9uZ2l0dWRlAHNldF9M
+YXRpdHVkZQBnZXRfbWVzc2FnZQBzZXRfbWVzc2FnZQBJRGlzcG9zYWJsZQBSdW50aW1lVHlwZUhh
+bmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBzZXRfQ2l0aU5hbWUAZ2V0X25hbWUAc2V0X25hbWUATWlj
+cm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAc2V0X1RpbWVab25lAFR5cGUAZ2V0X3R5cGUA
+c2V0X3R5cGUAc2V0X1ByZXNzdXJlAGdldF9wcmVzc3VyZQBzZXRfcHJlc3N1cmUAc2V0X1RlbXBh
+cmF0dXJlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlv
+blNldHRpbmdzQmFzZQBzZXRfU3VucmlzZQBnZXRfc3VucmlzZQBzZXRfc3VucmlzZQBEaXNwb3Nl
+AHNldF9DYWxjdWxhdGVkRGF0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRl
+ZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1
+dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1i
+bHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29u
+ZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0
+aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5
+Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRl
+AEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQ
+cmVFeGVjdXRlAFBvc3RFeGVjdXRlAHZhbHVlAERlc2VyaWFsaXplAHNldF9XaW5kRGVnAGdldF9k
+ZWcAc2V0X2RlZwBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAERvd25sb2FkU3RyaW5nAERlY2lt
+YWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAGdldF9hbGwAc2V0X2FsbABTQ19jN2EwNjViYjZhNjQ0
+Y2M0YjY5NTljZDZiNGM1MzAwYy5kbGwAc2V0X0NpdGlJRF9Jc051bGwAc2V0X1dlYXRoZXJJRF9J
+c051bGwAc2V0X1dpbmRTcGVlZF9Jc051bGwAc2V0X0NvdW50cnlDb2RlX0lzTnVsbABzZXRfTG9u
+Z2l0dWRlX0lzTnVsbABzZXRfTGF0aXR1ZGVfSXNOdWxsAHNldF9DaXRpTmFtZV9Jc051bGwAc2V0
+X1RpbWVab25lX0lzTnVsbABzZXRfUHJlc3N1cmVfSXNOdWxsAHNldF9UZW1wYXJhdHVyZV9Jc051
+bGwAc2V0X1N1bnJpc2VfSXNOdWxsAHNldF9DYWxjdWxhdGVkRGF0ZV9Jc051bGwAc2V0X1dpbmRE
+ZWdfSXNOdWxsAHNldF9UZW1wTWluX0lzTnVsbABzZXRfV2VhdGhlck1haW5fSXNOdWxsAHNldF9X
+ZWF0aGVySWNvbl9Jc051bGwAc2V0X1dlYXRoZXJEZXNjcmlwdGlvbl9Jc051bGwAc2V0X0Nsb3Vk
+aW5lc3NfSXNOdWxsAHNldF9TdW5zZXRfSXNOdWxsAHNldF9DbnRfSXNOdWxsAHNldF9UZW1wTWF4
+X0lzTnVsbABzZXRfSHVtaWRpdHlfSXNOdWxsAHNldF9WaXNpYmlsaXR5X0lzTnVsbABTZXROdWxs
+AGdldF9JdGVtAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBzZXRfVGVtcE1pbgBzZXRfV2Vh
+dGhlck1haW4AU2NyaXB0TWFpbgBnZXRfbWFpbgBzZXRfbWFpbgBnZXRfdGVtcF9taW4Ac2V0X3Rl
+bXBfbWluAHNldF9XZWF0aGVySWNvbgBnZXRfaWNvbgBzZXRfaWNvbgBTeXN0ZW0uQ29uZmlndXJh
+dGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uV2ViLlNjcmlwdC5TZXJpYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24Ac2V0X1dlYXRoZXJE
+ZXNjcmlwdGlvbgBnZXRfZGVzY3JpcHRpb24Ac2V0X2Rlc2NyaXB0aW9uAGdldF9sb24Ac2V0X2xv
+bgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABNaWNyb3NvZnQuU3FsU2VydmVy
+LkRUU1J1bnRpbWVXcmFwAGdldF90ZW1wAHNldF90ZW1wAE91dHB1dDBCdWZmZXIAUGlwZWxpbmVC
+dWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIAV2VhdGhlcgBnZXRfd2VhdGhl
+cgBzZXRfd2VhdGhlcgBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lLldyYXBwZXIASmF2
+YVNjcmlwdFNlcmlhbGl6ZXIAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IAT3V0cHV0SURzAFN5
+c3RlbS5EaWFnbm9zdGljcwBDbG91ZHMAZ2V0X2Nsb3VkcwBzZXRfY2xvdWRzAFN5c3RlbS5SdW50
+aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ19jN2EwNjViYjZhNjQ0Y2M0
+YjY5NTljZDZiNGM1MzAwYy5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5n
+TW9kZXMAU0NfYzdhMDY1YmI2YTY0NGNjNGI2OTU5Y2Q2YjRjNTMwMGMuUHJvcGVydGllcwBnZXRf
+UmVhZE9ubHlWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNl
+dHRpbmdzAFN5c3RlbS5XZWIuRXh0ZW5zaW9ucwBDb25uZWN0aW9ucwBCdWZmZXJzAHNldF9DbG91
+ZGluZXNzAGdldF9Vbml0cwBGaW5pc2hPdXRwdXRzAENyZWF0ZU5ld091dHB1dFJvd3MAU3lzAGdl
+dF9zeXMAc2V0X3N5cwBDb25jYXQAZ2V0X2xhdABzZXRfbGF0AFJvb3RPYmplY3QAZ2V0X2R0AHNl
+dF9kdABTeXN0ZW0uTmV0AHNldF9TdW5zZXQAZ2V0X3N1bnNldABzZXRfc3Vuc2V0AFNldEVuZE9m
+Um93c2V0AGdldF9EZWZhdWx0AHNldF9DbnQAZ2V0X2NudABzZXRfY250AFdlYkNsaWVudABVc2Vy
+Q29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21wb25lbnQAZ2V0X0N1cnJlbnQATWlj
+cm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABnZXRfQ2l0aUlEc0xpc3QAZ2V0X2xpc3QAc2V0X2xp
+c3QATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhvc3QAUHJpbWVPdXRwdXQATW92ZU5leHQA
+R2V0VmFsdWVXaXRoQ29udGV4dABTY3JpcHRDb21wb25lbnRFdmFsQ29udGV4dABnZXRfRXZhbHVh
+dG9yQ29udGV4dABBZGRSb3cAc2V0X1RlbXBNYXgAZ2V0X3RlbXBfbWF4AHNldF90ZW1wX21heABn
+ZXRfQVBJS2V5AGdldF9Bc3NlbWJseQBnZXRfY291bnRyeQBzZXRfY291bnRyeQBzZXRfSHVtaWRp
+dHkAZ2V0X2h1bWlkaXR5AHNldF9odW1pZGl0eQBzZXRfVmlzaWJpbGl0eQBnZXRfdmlzaWJpbGl0
+eQBzZXRfdmlzaWJpbGl0eQAAAAAPJgB1AG4AaQB0AHMAPQAADyYAYQBwAHAAaQBkAD0AAICbSQBz
+AE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAA
+dABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0
+AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAARTwB1AHQAcAB1AHQAIAAwAAAN
+QQBQAEkASwBlAHkAABdDAGkAdABpAEkARABzAEwAaQBzAHQAABdDAHUAcgByAGUAbgB0AF8AVQBS
+AEwAAAtVAG4AaQB0AHMAAHFTAEMAXwBjADcAYQAwADYANQBiAGIANgBhADYANAA0AGMAYwA0AGIA
+NgA5ADUAOQBjAGQANgBiADQAYwA1ADMAMAAwAGMALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBl
+AHMAbwB1AHIAYwBlAHMAAJEC2Ow3ZS1JpXS1mib7HhMABCABAQgDIAABBSABARERBCABAQ4FIAEB
+EWkaBwsODg4ODg4SQBURPQESPBI8FRE9ARIsEiwFAAEOHQ4EIAEODgYwAQEeAA4ECgESQAYVEjkB
+EjwIIAAVET0BEwAGFRE9ARI8BCAAEwAGFRI5ARIsBhURPQESLAMgAAIJIAMBElEdCBJVBSACAQgc
+AwcBCAYAAggSVQ4FIAEdCAgFIAASgI0GIAESgJEcBQAAEoCVBiABHBKAmQgAARKAnRGAoQUgABKA
+pQcgAgEOEoClCLd6XFYZNOCJCImEXc2AgMyRCDG/OFatNk41AwYSFAMGEhgDBhIMAwYSWQMGEmED
+BhJlAwYSIAIGDgIGCAIGDQMGEUkDBhIkAwYSKAcGFRI5ARIsAwYSMAMGEjQDBhI4BwYVEjkBEjwE
+IAEBAgUgAQERSQsgBAEIHQgdElESVQUgAQESWQMgAA4EAAASYQQAABJlBQABARJlBAAAEiADAAAB
+AyAACAMgAA0EIAEBDQQgABFJBCAAEiQFIAEBEiQEIAASKAUgAQESKAggABUSOQESLAkgAQEVEjkB
+EiwEIAASMAUgAQESMAQgABI0BSABARI0BCAAEjgFIAEBEjgIIAAVEjkBEjwJIAEBFRI5ARI8AygA
+CAMoAAIDKAAOBCgAEUkECAASYQQIABJlBAgAEiADKAANBCgAEiQEKAASKAgoABUSOQESLAQoABIw
+BCgAEjQEKAASOAgoABUSOQESPAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93
+cwEIAQACAAAAAAAoAQAjU0NfYzdhMDY1YmI2YTY0NGNjNGI2OTU5Y2Q2YjRjNTMwMGMAAAUBAAAA
+ABYBABFDb3B5cmlnaHQgQCAgMjAxOQAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBU
+DhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjUEAQAAAAC0AAAAzsrvvgEA
+AACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9u
+PTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
+OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0
+AAAAZFcAAAAAAAAAAAAAflcAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBXAAAAAAAAAAAAAAAA
+X0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAGAAAgAAAAAAA
+AAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAADsAwAAAAAAAAAA
+AADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAAAQAAAAEAAAAA
+AAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQByAEYAaQBsAGUA
+SQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAETAMAAAEAUwB0
+AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAwADQAYgAwAAAAGgABAAEA
+QwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBhAG0AZQAAAAAAAAAA
+AHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwBjADcAYQAwADYA
+NQBiAGIANgBhADYANAA0AGMAYwA0AGIANgA5ADUAOQBjAGQANgBiADQAYwA1ADMAMAAwAGMAAAAw
+AAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAAAABwACgAAQBJAG4A
+dABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfAGMANwBhADAANgA1AGIAYgA2AGEANgA0ADQAYwBj
+ADQAYgA2ADkANQA5AGMAZAA2AGIANABjADUAMwAwADAAYwAuAGQAbABsAAAASAASAAEATABlAGcA
+YQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMQA5
+AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIA
+aQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AYwA3AGEAMAA2ADUAYgBiADYAYQA2
+ADQANABjAGMANABiADYAOQA1ADkAYwBkADYAYgA0AGMANQAzADAAMABjAC4AZABsAGwAAABoACQA
+AQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfAGMANwBhADAANgA1AGIAYgA2AGEANgA0
+ADQAYwBjADQAYgA2ADkANQA5AGMAZAA2AGIANABjADUAMwAwADAAYwAAADQACAABAFAAcgBvAGQA
+dQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMAcwBlAG0AYgBs
+AHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAMAAAAkDcAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
                 </property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
                   name="VSTAProjectName"
-                  typeConverter="NOTBROWSABLE">SC_a1154b2ee42d4f9c848eed1e6bb3a1cf</property>
+                  typeConverter="NOTBROWSABLE">SC_c7a065bb6a644cc4b6959cd6b4c5300c</property>
                 <property
                   dataType="System.String"
                   description="Specifies the programming language used by the script."
@@ -1255,7 +2055,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
                   dataType="System.String"
                   description="Specifies a comma-separated list of read-only variables."
                   name="ReadOnlyVariables"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::CitiIDsList,User::CurrentData_OWM_URL,$Project::APIKey,$Project::Units</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::CitiIDsList,User::Current_URL,$Project::APIKey,$Project::Units</property>
                 <property
                   dataType="System.String"
                   description="Specifies a comma-separated list of read/write variables."
@@ -1274,141 +2074,156 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">EE</property>
+                  typeConverter="NOTBROWSABLE">F4</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
               </properties>
               <outputs>
                 <output
-                  refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0]"
+                  refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0]"
                   hasSideEffects="true"
                   name="Output 0">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CitiID]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiID]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CitiID]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiID]"
                       name="CitiID" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CitiName]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiName]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CitiName]"
+                      length="60"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CitiName]"
                       name="CitiName" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CountryCode]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Latitude]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[CountryCode]"
-                      name="CountryCode" />
-                    <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Latitude]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Latitude]"
+                      length="16"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Latitude]"
                       name="Latitude" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Longitude]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Longitude]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Longitude]"
+                      length="16"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Longitude]"
                       name="Longitude" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TimeZone]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CountryCode]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TimeZone]"
+                      length="2"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TimeZone]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TimeZone]"
                       name="TimeZone" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Sunrise]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunrise]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Sunrise]"
+                      length="12"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunrise]"
                       name="Sunrise" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Sunset]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunset]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Sunset]"
+                      length="12"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Sunset]"
                       name="Sunset" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherID]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherID]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cnt]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cnt]"
+                      name="Cnt" />
+                    <outputColumn
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherID]"
                       name="WeatherID" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherMain]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherMain]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherMain]"
+                      length="60"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherMain]"
                       name="WeatherMain" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherDesc]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherDescription]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherDesc]"
-                      name="WeatherDesc" />
+                      length="100"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherDescription]"
+                      name="WeatherDescription" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherIcon]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherIcon]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WeatherIcon]"
+                      length="10"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WeatherIcon]"
                       name="WeatherIcon" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Temperaturue]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Temparature]"
                       dataType="decimal"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Temperaturue]"
-                      name="Temperaturue" />
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Temparature]"
+                      name="Temparature" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Pressure]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Pressure]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Pressure]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Pressure]"
                       name="Pressure" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TempMin]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Humidity]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Humidity]"
+                      name="Humidity" />
+                    <outputColumn
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMin]"
                       dataType="decimal"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TempMin]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMin]"
                       name="TempMin" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TempMax]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMax]"
                       dataType="decimal"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[TempMax]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[TempMax]"
                       name="TempMax" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Visibiity]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Visibility]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Visibiity]"
-                      name="Visibiity" />
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Visibility]"
+                      name="Visibility" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WindSpeed]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindSpeed]"
                       dataType="decimal"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WindSpeed]"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindSpeed]"
                       name="WindSpeed" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WindDeg]"
-                      dataType="i4"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[WindDeg]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindDeg]"
+                      dataType="decimal"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[WindDeg]"
                       name="WindDeg" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Cloudiness]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Cloudiness]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cloudiness]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[Cloudiness]"
                       name="Cloudiness" />
                     <outputColumn
-                      refId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Date]"
+                      refId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CalculatedDate]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT - Load Current Data\Script Component.Outputs[Output 0].Columns[Date]"
-                      name="Date" />
+                      length="12"
+                      lineageId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0].Columns[CalculatedDate]"
+                      name="CalculatedDate" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
           </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Current Data.Paths[Output 0]"
+              endId="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData.Inputs[OLE DB Destination Input]"
+              name="Output 0"
+              startId="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API.Outputs[Output 0]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1425,7 +2240,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
-          SQLTask:SqlStatementSource="SELECT DISTINCT STUFF(&#xA;      (SELECT ','+ CAST(CitiNK AS VARCHAR(10))&#xA;       FROM [DIM].[Cities]&#xA;       ORDER BY CitiNK&#xA;       FOR XML PATH('')),1,1,'') CityIDsList&#xA;FROM [DIM].[Cities]"
+          SQLTask:SqlStatementSource="SELECT DISTINCT CAST (STUFF(&#xA;      (SELECT ','+ CAST(CitiNK AS VARCHAR(10))&#xA;       FROM [DIM].[Cities]&#xA;       ORDER BY CitiNK&#xA;       FOR XML PATH('')),1,1,'') AS NVARCHAR(200)) CityIDsList&#xA;FROM [DIM].[Cities]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1438,7 +2253,7 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{5EB7D09E-485D-40E9-8EB1-C693A339CE35}"
+      DTS:DTSID="{2AADD50E-7D76-495C-BDFC-E713D6B8F54F}"
       DTS:From="Package\SQL - Get Citi ID from DIM_Cities"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1493,13 +2308,52 @@ namespace SC_a1154b2ee42d4f9c848eed1e6bb3a1cf.Properties {
     design-time-name="Package\DFT - Load Current Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
-          Id="Package\DFT - Load Current Data\Script Component"
-          TopLeft="304,77" />
+          Size="279,42"
+          Id="Package\DFT - Load Current Data\SCR - Extract Current Data from OWM API"
+          TopLeft="327,90" />
+        <NodeLayout
+          Size="279,42"
+          Id="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData"
+          TopLeft="332,250" />
+        <EdgeLayout
+          Id="Package\DFT - Load Current Data.Paths[Output 0]"
+          TopLeft="469,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118"
+              Start="0,0"
+              End="0,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load Current Data\OLEDB_Dest - Load Stagging_CurrentData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
