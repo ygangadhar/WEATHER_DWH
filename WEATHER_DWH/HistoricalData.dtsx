@@ -11,28 +11,1666 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="HistoricalData"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{8C9C97D2-D474-411D-9072-43A14E4D3B25}">
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{50BDE56D-F599-4DB9-AAF8-6F32D100F94F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FFBF1471-E516-490A-AD7D-ED78F7FFB769}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CitiID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0A0A5701-B8FF-4BE9-ABAB-E10FFC92B89C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CitiSK">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{58FF7D37-3EFE-4027-BDAA-59B42C92C8BD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="HistoricalDataURL">
+      <DTS:VariableValue
+        DTS:DataType="8">https://metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{808A9B00-8EB5-4C69-9263-9E3CE3F323A3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Location">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C4BEBF19-4B37-403E-96DE-CD90EB7B0B10}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocationList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{730F183B-0E48-4FDF-A376-F57D138E5841}"
-      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:refId="Package\Foreach Loop - Loop through each City"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{AD3F55C8-7997-4F3F-B850-2E1BA953026E}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      DTS:ObjectName="Foreach Loop - Loop through each City">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{50DD4145-8698-4939-8F44-8A5B25A0C138}"
+        DTS:ObjectName="{50DD4145-8698-4939-8F44-8A5B25A0C138}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::LocationList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{FE4378E4-1E9F-4497-9527-DFCCC551B733}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - Load Historical Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLEDB DST - Load Staging_HistoricalData"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[HistoricalData]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Connections[OleDbConnection]"
+                      connectionManagerID="{2F0B9ABE-B0F6-4174-9360-6F341960A908}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[WeatherDWH_DBConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[CitiSK]"
+                          cachedDataType="i4"
+                          cachedName="CitiSK"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiSK]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiSK]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[Year]"
+                          cachedDataType="i4"
+                          cachedName="Year"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Year]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[Month]"
+                          cachedDataType="i4"
+                          cachedName="Month"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Month]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[TMax]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="TMax"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[TMax]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMax]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[TMin]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="TMin"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[TMin]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMin]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[AFDays]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="AFDays"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[AFDays]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[AFDays]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[RainFall]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="RainFall"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[RainFall]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[RainFall]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[SunHours]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="SunHours"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[SunHours]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[SunHours]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[CitiID]"
+                          cachedDataType="i4"
+                          cachedName="CitiID"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiNK]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[CitiName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CitiName"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiName]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiSK]"
+                          dataType="i4"
+                          name="CitiSK" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiNK]"
+                          dataType="i4"
+                          name="CitiNK" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiName]"
+                          dataType="wstr"
+                          length="60"
+                          name="CitiName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i4"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          dataType="i4"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[TMax]"
+                          dataType="wstr"
+                          length="50"
+                          name="TMax" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[TMin]"
+                          dataType="wstr"
+                          length="50"
+                          name="TMin" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[AFDays]"
+                          dataType="wstr"
+                          length="50"
+                          name="AFDays" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[RainFall]"
+                          dataType="wstr"
+                          length="50"
+                          name="RainFall" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[SunHours]"
+                          dataType="wstr"
+                          length="50"
+                          name="SunHours" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDateTime]"
+                          dataType="dbTimeStamp"
+                          name="CreatedDateTime" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
+                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                  name="SRC - Extract Historical"
+                  version="11">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Stores the source code of the component"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="30">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_1586fcf9a6904a438b32fabab33e8088")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_1586fcf9a6904a438b32fabab33e8088")]
+[assembly: AssemblyCopyright("Copyright @  2019")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using System.Linq;
+using System.Net;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        /*
+          Add rows by calling the AddRow method on the member variable named "<Output Name>Buffer".
+          For example, call MyOutputBuffer.AddRow() if your output was named "MyOutput".
+        */
+        var location = Variables.Location;
+        var citiSK = Variables.CitiSK;
+        var citiID = Variables.CitiID;
+        var historicalDataUrl = Variables.HistoricalDataURL;
+
+        //Set URL for the location 
+        var locationUrl = historicalDataUrl + location + "data.txt";
+
+        //Read file from web
+        var textFromFile = (new System.Net.WebClient()).DownloadString(locationUrl);
+        
+        //Split the text at the new limes
+        var lines = textFromFile.Split(new[] {"\r\n", "\r", "\n" },StringSplitOptions.None).ToList();
+        //remove the first seven lines as data start from 8
+        lines.RemoveRange(0, 7);
+        foreach (var line in lines)
+        {
+            //read the data from each line and filter empty spaces
+            var values = line.Split(' ').Where(str => !string.IsNullOrEmpty(str)).ToList();
+            Output0Buffer.AddRow();
+            Output0Buffer.CitiSK = citiSK;
+            Output0Buffer.CitiID = citiID;
+            Output0Buffer.CitiName = location;
+            Output0Buffer.Year = Convert.ToInt32(values[0]);
+            Output0Buffer.Month = Convert.ToInt32(values[1]);
+            Output0Buffer.TMax = GetStringValue(values[2]);
+            Output0Buffer.TMin = GetStringValue(values[3]);
+            Output0Buffer.AFDays = GetStringValue(values[4]);
+            Output0Buffer.RainFall = GetStringValue(values[5]);
+            Output0Buffer.SunHours = GetStringValue(values[6]);
+
+        }
+    }
+
+    private static String GetStringValue(string value)
+    {
+        value = value.Replace("*", "").Replace("#", "").Replace("---","NA");
+        return value;
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 CitiSK
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool CitiSK_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 CitiID
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool CitiID_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String CitiName
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool CitiName_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Year
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool Year_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Month
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool Month_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String TMax
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool TMax_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String TMin
+    {
+        set
+        {
+            this[6] = value;
+        }
+    }
+    public bool TMin_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(6);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String AFDays
+    {
+        set
+        {
+            this[7] = value;
+        }
+    }
+    public bool AFDays_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(7);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String RainFall
+    {
+        set
+        {
+            this[8] = value;
+        }
+    }
+    public bool RainFall_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(8);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String SunHours
+    {
+        set
+        {
+            this[9] = value;
+        }
+    }
+    public bool SunHours_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(9);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public Int32 CitiID
+    {
+        get
+        {
+            return (Int32)(ParentComponent.ReadOnlyVariables["CitiID"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public Int32 CitiSK
+    {
+        get
+        {
+            return (Int32)(ParentComponent.ReadOnlyVariables["CitiSK"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String HistoricalDataURL
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["HistoricalDataURL"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String Location
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["Location"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_1586fcf9a6904a438b32fabab33e8088.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_1586fcf9a6904a438b32fabab33e8088.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_1586fcf9a6904a438b32fabab33e8088.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_1586fcf9a6904a438b32fabab33e8088.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_1586fcf9a6904a438b32fabab33e8088.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Project]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_1586fcf9a6904a438b32fabab33e8088</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_1586fcf9a6904a438b32fabab33e8088</msb:DisplayName>
+    <msb:ProjectId>{A99AD3D1-2467-415E-B6CE-33AC676C3AE6}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_1586fcf9a6904a438b32fabab33e8088.csproj" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_1586fcf9a6904a438b32fabab33e8088.Properties.Settings.get_Default():SC_1586fcf9a6904a438b32fabab33e8088.Properties.Sett" +
+    "ings")]
+
+namespace SC_1586fcf9a6904a438b32fabab33e8088.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_1586fcf9a6904a438b32fabab33e8088.csproj]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC01FDD2-2CB1-44C8-875E-D1F59FAADF03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_1586fcf9a6904a438b32fabab33e8088</RootNamespace>
+    <AssemblyName>SC_1586fcf9a6904a438b32fabab33e8088</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC140</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Stores the binary representation of the component"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="2">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_1586fcf9a6904a438b32fabab33e8088.dll]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[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
+6QA4CCwA8QCzBgYA8QAjBDMA6QBgCDgAAQHbCEEADABWAVwADAClBmIAFACqCHEA6QBgCHYAHACz
+BoQAAQHQAYoADABCBaMAGQF0AKkAFAAPCa4AIQEiAgYA6QA+AbIAmQCzBrgAmQBLBcIAmQA6BQEA
+MQGzBhAAmQBcCQYAmQBRCAYAmQBUCK4AsQCzBgYAsQDKAMwAsQC9B9MAiQCzBgYAsQCTB9kAOQFC
+Bd8AsQBHCeYAQQEYCewAWQGLAfMAWQFsCfwAwQCzBgIB4QCzBgYA6QB5CQoBLgALAKYBLgATAK8B
+LgAbAM4BLgAjANcBLgArAAACLgAzAAACLgA7AAACLgBDANcBLgBLAAYCLgBTAAACLgBbAB0CQwBj
+AGcC4wBzAGcCAQFrAGcCIwFrAGcCKQN7AM4BSQN7AM4BGwDIAAMAAQAGABUABwAZAAgAGwAAAOUA
+iwEAAJ0EjwEAAMMAiwEAAIsEjwEAAKEBkwEAAK8EjwEAADUGiwEAAPgEjwEAADYEiwEAAMMEjwEA
+AGcJkwEAAC4FjwEAAGsFkwEAAOgEjwEAADEIkwEAABwFjwEAAFYEkwEAANQEjwEAAAIIkwEAAAgF
+jwEAAMMAiwEAAOUAiwEAAPAAkwEAAH8FkwEAAG0GlwEAAAICnAEAAGoIoQEBAAcAAwABAAgABQAB
+AAkABwABAAoACQABAAsACwABAAwADQABAA0ADwABAA4AEQABAA8AEwABABAAFQABABEAFwABABIA
+GQABABMAGwABABQAHQABABUAHwABABYAIQABABcAIwABABgAJQABABkAJwABABoAKQACACUAKwAC
+ACYALQACACcALwACACgAMQACACoAMwACACsANQABACwANQACAC0ANwBWAGsAfQAEgAAAAQAAAAAA
+AAAAAAAAAACDAAAABAAAAAAAAAAAAAAADwECAQAAAAAOAAAAAAAAAAAAAAAYAbYIAAAAAA4AAAAA
+AAAAAAAAABgB4ggAAAAABAAAAAAAAAAAAAAADwFUBQAAAAAEAAAAAAAAAAAAAAAPAdYBAAAAAA4A
+AAAAAAAAAAAAABgBAgYAAAAAAAAAAAEAAAASBwAACQACAC0AUgA5AFIAAAAAAABJRFRTVmFyaWFi
+bGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29udGV4dDEwMAA8PjlfXzJfMAA8
+Q3JlYXRlTmV3T3V0cHV0Um93cz5iX18yXzAASUVudW1lcmFibGVgMQBMaXN0YDEAVG9JbnQzMgBG
+dW5jYDIAU0NfMTU4NmZjZjlhNjkwNGE0MzhiMzJmYWJhYjMzZTgwODgAPD45ADxNb2R1bGU+AGdl
+dF9DaXRpSUQAc2V0X0NpdGlJRABHZXRPdXRwdXRJRABnZXRfQ2l0aVNLAHNldF9DaXRpU0sAZ2V0
+X0hpc3RvcmljYWxEYXRhVVJMAG1zY29ybGliADw+YwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJp
+YwBNYXJrT3V0cHV0c0ZpbmlzaGVkAFJlcGxhY2UAZGVmYXVsdEluc3RhbmNlAFJlbW92ZVJhbmdl
+AEVudW1lcmFibGUASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5k
+bGUAc2V0X0NpdGlOYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAV2hl
+cmUAU3lzdGVtLkNvcmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFw
+cGxpY2F0aW9uU2V0dGluZ3NCYXNlAERpc3Bvc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGls
+ZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dh
+YmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmli
+dXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBB
+c3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0
+ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0
+ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2lu
+dEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlB
+dHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQBHZXRTdHJpbmdWYWx1ZQB2YWx1ZQBTeXN0
+ZW0uUnVudGltZS5WZXJzaW9uaW5nAERvd25sb2FkU3RyaW5nAHNldF9Nb250aABTeXN0ZW0uQ29t
+cG9uZW50TW9kZWwAc2V0X1JhaW5GYWxsAFNDXzE1ODZmY2Y5YTY5MDRhNDM4YjMyZmFiYWIzM2U4
+MDg4LmRsbABzZXRfQ2l0aUlEX0lzTnVsbABzZXRfQ2l0aVNLX0lzTnVsbABzZXRfQ2l0aU5hbWVf
+SXNOdWxsAHNldF9Nb250aF9Jc051bGwAc2V0X1JhaW5GYWxsX0lzTnVsbABzZXRfVE1pbl9Jc051
+bGwAc2V0X1llYXJfSXNOdWxsAHNldF9TdW5Ib3Vyc19Jc051bGwAc2V0X0FGRGF5c19Jc051bGwA
+c2V0X1RNYXhfSXNOdWxsAFNldE51bGwAZ2V0X0l0ZW0Ac2V0X0l0ZW0AU3lzdGVtAHJlc291cmNl
+TWFuAHNldF9UTWluAFNjcmlwdE1haW4AZ2V0X0xvY2F0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9u
+AFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25F
+eGNlcHRpb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAATWljcm9zb2Z0LlNx
+bFNlcnZlci5EVFNSdW50aW1lV3JhcABTeXN0ZW0uTGlucQBzZXRfWWVhcgBDaGFyAE91dHB1dDBC
+dWZmZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIATWlj
+cm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZS5XcmFwcGVyAEdldEVudW1lcmF0b3IALmN0b3IA
+LmNjdG9yAHN0cgBPdXRwdXRJRHMAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNv
+bXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ18xNTg2ZmNmOWE2OTA0YTQzOGIzMmZh
+YmFiMzNlODA4OC5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMA
+U0NfMTU4NmZjZjlhNjkwNGE0MzhiMzJmYWJhYjMzZTgwODguUHJvcGVydGllcwBnZXRfUmVhZE9u
+bHlWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdz
+AENvbm5lY3Rpb25zAFN0cmluZ1NwbGl0T3B0aW9ucwBCdWZmZXJzAHNldF9TdW5Ib3VycwBGaW5p
+c2hPdXRwdXRzAENyZWF0ZU5ld091dHB1dFJvd3MAc2V0X0FGRGF5cwBDb25jYXQAT2JqZWN0AFN5
+c3RlbS5OZXQAU2V0RW5kT2ZSb3dzZXQAU3BsaXQAZ2V0X0RlZmF1bHQAV2ViQ2xpZW50AFVzZXJD
+b21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBvbmVudABnZXRfQ3VycmVudABNaWNy
+b3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AENvbnZlcnQAVG9MaXN0AE1pY3Jvc29mdC5TcWxTZXJ2
+ZXIuUGlwZWxpbmVIb3N0AFByaW1lT3V0cHV0AE1vdmVOZXh0AEdldFZhbHVlV2l0aENvbnRleHQA
+U2NyaXB0Q29tcG9uZW50RXZhbENvbnRleHQAZ2V0X0V2YWx1YXRvckNvbnRleHQAQWRkUm93AHNl
+dF9UTWF4AGdldF9Bc3NlbWJseQBJc051bGxPckVtcHR5AAAAEWQAYQB0AGEALgB0AHgAdAAABQ0A
+CgAAAw0AAAMKAAADKgAAAQADIwAABy0ALQAtAAEFTgBBAACAm0kAcwBOAHUAbABsACAAcAByAG8A
+cABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUAdAAgAHQAbwAgAEYAYQBsAHMAZQAu
+ACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABvACAAdABoAGUAIABjAG8AbAB1AG0A
+bgAgAGkAbgBzAHQAZQBhAGQALgAAEU8AdQB0AHAAdQB0ACAAMAAADUMAaQB0AGkASQBEAAANQwBp
+AHQAaQBTAEsAACNIAGkAcwB0AG8AcgBpAGMAYQBsAEQAYQB0AGEAVQBSAEwAABFMAG8AYwBhAHQA
+aQBvAG4AAHFTAEMAXwAxADUAOAA2AGYAYwBmADkAYQA2ADkAMAA0AGEANAAzADgAYgAzADIAZgBh
+AGIAYQBiADMAMwBlADgAMAA4ADgALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAACRF0EFiiEJEgllxzsL/enAABCABAQgDIAABBSABARERBCABAQ4FIAEBEWkQBwYOCAgO
+FRE9AQ4VEjkBDgYAAw4ODg4EIAEODgggAh0OHQ4RfRAQAQEVEjkBHgAVEoCFAR4AAwoBDgUVEjkB
+DgUgAgEICAggABURPQETAAUVET0BDgQgABMABiABHQ4dAwYVEkkCDgIFIAIBHBgYEAECFRKAhQEe
+ABUSgIUBHgAVEkkCHgACBSABEwAIBAABCA4DIAACBSACDg4OCSADARJRHQgSVQUgAgEIHAMHAQgG
+AAIIElUOBSABHQgIBSAAEoCdBiABEoChHAUAABKApQYgARwSgKkIAAESgK0RgLEFIAASgLUHIAIB
+DhKAtQQAAQIOCLd6XFYZNOCJCImEXc2AgMyRAwYSFAMGEhgDBhIMAwYSWQMGEmEDBhJlAwYSIAMG
+EiQHBhUSSQIOAgQAAQ4OBCABAQILIAQBCB0IHRJRElUFIAEBElkDIAAIAyAADgQAABJhBAAAEmUF
+AAEBEmUEAAASIAMAAAEEIAECDgMoAAgDKAACAygADgQIABJhBAgAEmUECAASIAgBAAgAAAAAAB4B
+AAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfMTU4NmZjZjlhNjkw
+NGE0MzhiMzJmYWJhYjMzZTgwODgAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAxOQAASQEAGi5O
+RVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZy
+YW1ld29yayA0LjUEAQAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJj
+ZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
+aWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291
+cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAAcPgAAAAAAAAAAAAA2PgAAACAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAKD4AAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUA
+IAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQ
+AAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhA
+AADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv
+/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYA
+YQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAA
+ALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAwADQA
+YgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBh
+AG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMA
+XwAxADUAOAA2AGYAYwBmADkAYQA2ADkAMAA0AGEANAAzADgAYgAzADIAZgBhAGIAYQBiADMAMwBl
+ADgAMAA4ADgAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAA
+AABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADEANQA4ADYAZgBjAGYAOQBh
+ADYAOQAwADQAYQA0ADMAOABiADMAMgBmAGEAYgBhAGIAMwAzAGUAOAAwADgAOAAuAGQAbABsAAAA
+SAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABA
+ACAAIAAyADAAMQA5AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAA
+AAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMQA1ADgANgBm
+AGMAZgA5AGEANgA5ADAANABhADQAMwA4AGIAMwAyAGYAYQBiAGEAYgAzADMAZQA4ADAAOAA4AC4A
+ZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADEANQA4ADYAZgBj
+AGYAOQBhADYAOQAwADQAYQA0ADMAOABiADMAMgBmAGEAYgBhAGIAMwAzAGUAOAAwADgAOAAAADQA
+CAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBB
+AHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAASD4AAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_1586fcf9a6904a438b32fabab33e8088</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the programming language used by the script."
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read-only variables."
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::CitiID,User::CitiSK,User::HistoricalDataURL,User::Location</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read/write variables."
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="List of breakpoints present on the script."
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Checksum to match component metedata against compiled codes."
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE">EE</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0]"
+                      hasSideEffects="true"
+                      name="Output 0">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiSK]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiSK]"
+                          name="CitiSK" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiID]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiID]"
+                          name="CitiID" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiName]"
+                          name="CitiName" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Year]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Year]"
+                          name="Year" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Month]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[Month]"
+                          name="Month" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMax]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMax]"
+                          name="TMax" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMin]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[TMin]"
+                          name="TMin" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[AFDays]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[AFDays]"
+                          name="AFDays" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[RainFall]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[RainFall]"
+                          name="RainFall" />
+                        <outputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[SunHours]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[SunHours]"
+                          name="SunHours" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data.Paths[Output 0]"
+                  endId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input]"
+                  name="Output 0"
+                  startId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{0F8CEA9E-EFFA-4525-9148-8E7B734C0912}"
+          DTS:ObjectName="{0F8CEA9E-EFFA-4525-9148-8E7B734C0912}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::Location" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{24ABC525-46B2-456C-B693-4C67A16F4687}"
+          DTS:ObjectName="{24ABC525-46B2-456C-B693-4C67A16F4687}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::CitiSK" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{38ED4938-523C-4AE7-9DDB-B314FAD4C2D9}"
+          DTS:ObjectName="{38ED4938-523C-4AE7-9DDB-B314FAD4C2D9}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::CitiID" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Get Cities List from DIM_Cities"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2E208DC9-659D-4DB2-A767-011BAB98D4F3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Get Cities List from DIM_Cities"
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <pipeline
-          version="1" />
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
+          SQLTask:SqlStatementSource="SELECT lower([CitiName]) AS NameOftheCity, CitiSK, CitiNk FROM [DIM].[Cities]"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LocationList" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate HistoricalData Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2326DABD-A5DC-44EC-8F6A-45CBF34E88B6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate HistoricalData Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[HistoricalData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2DA389B1-E87B-4AA0-948F-92CD1F73866C}"
+      DTS:From="Package\SQL - Get Cities List from DIM_Cities"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop - Loop through each City" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{ADB2BC7F-33A2-4310-A6E4-EBCBB93B428A}"
+      DTS:From="Package\SQL - Truncate HistoricalData Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL - Get Cities List from DIM_Cities" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -44,13 +1682,135 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
-          TopLeft="311,106" />
+          Size="203,42"
+          Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data"
+          TopLeft="72,26" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="354,123"
+          Size="354,166"
+          Id="Package\Foreach Loop - Loop through each City"
+          TopLeft="286,254" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\SQL - Get Cities List from DIM_Cities"
+          TopLeft="343,144" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="466,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="265,42"
+          Id="Package\SQL - Truncate HistoricalData Table"
+          TopLeft="333,36" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="467.25,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical"
+          TopLeft="277,72" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData"
+          TopLeft="241,204" />
+        <EdgeLayout
+          Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data.Paths[Output 0]"
+          TopLeft="371,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,90"
+              Start="0,0"
+              End="8.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
+                  <mssgle:LineSegment
+                    End="4.5,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,45"
+                    Point2="8.5,45"
+                    Point3="8.5,49" />
+                  <mssgle:LineSegment
+                    End="8.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
