@@ -26,12 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MYLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA73XNPryzr0i5kcELKhg1MQAAAAACAAAAAAAQZgAAAAEAACAAAAB2GWB2+uhLlGG1JJMpcncVCSNPQ9uBFt3x7bKoaAjnwgAAAAAOgAAAAAIAACAAAABflNGgPUGyRqQVLZdMjPsltumGEE+S3vrdGfwDHh3UwpAAAADI5WXNTtEOfLSbBKuSH1b1o95yDuiN/LBB7+5eiX9MjYDloh51Evg9F/kR0Mvpa35tlJgtw3zmBy2Y9eMq7yrT4LsZtzVuKuCXVzrXpxLv+yNoM7Pb+jQ/NKBH0m60Ump+5tCYZZ5+w7jyvs6VHdi7Vqkr4IJL5OUE8tNtVlZvbIUZoyPeX5EJajWej0FVeQNAAAAAi3GosBeLQfmNMqqyq2KBNsFlim2jDS2SgekBDECHiKhA9pDfoaDc8DjZhBiBtE1CzDI24pUq34EV7mr5mW43gA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA73XNPryzr0i5kcELKhg1MQAAAAACAAAAAAAQZgAAAAEAACAAAAAbnqCt74qbL9oF3jvJgGQlBk7cpt5urQGEky1feR5oYgAAAAAOgAAAAAIAACAAAAD9sa9NiRtgKUKmJVJYt4vQid+yXV+xZCBmpMySuT1IWZAAAAAJit21RxHtBKxMuUdB5q+Sc3+wNEITmn4+sDwv3C6FhM/qpPrhnRyqg7yhd62Z6OelC6lcH3n4a1AWItPwNIlvs8NExihYzRr8IrNn8R8liGb7YAmn8ZrD/LGBU1Pf33StbMCSI2sJVwVS+Iiraxu+o+4VQRcsEx5QW6y9CRdpgv6cyHZyV38CRj2wOWqEckhAAAAAGL9OyGtRtmML39csF5c7ZuTlcY+A7Smv9lvZ4PtikUx6zxYhys5xW68SKIGpMaukfD9sUETo66FjVvdnFm9dVA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="HistoricalData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="CurrentData.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ForecastData_3Hours.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ForecastDataDaily.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="WeatherDWH_DBConnection.conmgr" />
@@ -149,10 +151,10 @@
                 <SSIS:Property SSIS:Name="Name">HistoricalData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">52</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">88</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E0C284CB-707B-4B2E-9F6E-E402A4F6B4EF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{50BDE56D-F599-4DB9-AAF8-6F32D100F94F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -166,10 +168,44 @@
                 <SSIS:Property SSIS:Name="Name">CurrentData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7F53E1AF-4574-44B8-8023-3C7CD1F536F5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7710A21C-8DA1-43B9-B6CA-0D435C514AD0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ForecastData_3Hours.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{ADF57D32-0271-40A2-9DA6-5F552000DEA7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ForecastData_3Hours</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{26680F5D-6B21-45AD-B4CB-D32C95F82241}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ForecastDataDaily.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3DFA66A3-953C-4301-A6DE-69D1C3A1FBA3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ForecastDataDaily</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{31286489-059A-477A-9DAE-71EA9D83886F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
