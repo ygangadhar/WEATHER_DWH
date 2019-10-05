@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
   <SSIS:Parameter
-    SSIS:Name="ETLSever">
+    SSIS:Name="ETLSeverName">
     <SSIS:Properties>
       <SSIS:Property
         SSIS:Name="ID">{52743efe-ef69-42c8-a233-fcbcf95fc900}</SSIS:Property>
@@ -22,10 +22,10 @@
     </SSIS:Properties>
   </SSIS:Parameter>
   <SSIS:Parameter
-    SSIS:Name="AS_Server">
+    SSIS:Name="APIKey">
     <SSIS:Properties>
       <SSIS:Property
-        SSIS:Name="ID">{d477eb28-712e-47f8-96c9-a19de4a8caaf}</SSIS:Property>
+        SSIS:Name="ID">{32b11672-958c-4da6-8002-967ceb07e3b2}</SSIS:Property>
       <SSIS:Property
         SSIS:Name="CreationName"></SSIS:Property>
       <SSIS:Property
@@ -37,7 +37,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">MYLAPTOP</SSIS:Property>
+        SSIS:Name="Value">f82cd4526798221525146a5c6d0a16dc</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
