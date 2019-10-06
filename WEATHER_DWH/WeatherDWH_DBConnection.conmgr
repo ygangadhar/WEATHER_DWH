@@ -7,6 +7,6 @@
     DTS:Name="ServerName">@[$Project::ETLSeverName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=MYLAPTOP;Initial Catalog=WeatherDWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=VMSQLServer;Initial Catalog=WeatherDWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

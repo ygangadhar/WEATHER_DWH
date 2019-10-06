@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MYLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA73XNPryzr0i5kcELKhg1MQAAAAACAAAAAAAQZgAAAAEAACAAAAAbnqCt74qbL9oF3jvJgGQlBk7cpt5urQGEky1feR5oYgAAAAAOgAAAAAIAACAAAAD9sa9NiRtgKUKmJVJYt4vQid+yXV+xZCBmpMySuT1IWZAAAAAJit21RxHtBKxMuUdB5q+Sc3+wNEITmn4+sDwv3C6FhM/qpPrhnRyqg7yhd62Z6OelC6lcH3n4a1AWItPwNIlvs8NExihYzRr8IrNn8R8liGb7YAmn8ZrD/LGBU1Pf33StbMCSI2sJVwVS+Iiraxu+o+4VQRcsEx5QW6y9CRdpgv6cyHZyV38CRj2wOWqEckhAAAAAGL9OyGtRtmML39csF5c7ZuTlcY+A7Smv9lvZ4PtikUx6zxYhys5xW68SKIGpMaukfD9sUETo66FjVvdnFm9dVA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzDGHZ/Az0Eif31m59mWMWQAAAAACAAAAAAAQZgAAAAEAACAAAABUXWr17jDCYitA2FyFdRkzmHTuahfo88HCXkyXetbxMQAAAAAOgAAAAAIAACAAAAAE4Igf+qcA6/nbH3GGFeD9+ksGquaKEDI+Eo5dZPz4YZAAAADNGjYZG4sajIO8PWHy8pZnvfNxSgg9XFasxtlpIK5Mi3VdOJ88Ihz333sUqN9C2yDn0rb8B5d4vkAD/DhWXEGkegrKBwlyaIM0gIIv4U/0EyU71PftpAQFJwvlNRXlTtmtHXnCar/LhqfFxFH8aGcli76Jav22dSJdSakHY1HVaKLAYWpHHMLKCutYymkSeuVAAAAA48zCvG0p7Ffst3bfkjtOTYgksMtyHlDPTCiUjY1T49aenPaWesbfe8lkh/krze/MZQVj9OA5TI5lJ+NgCzbZRQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -66,7 +66,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=MYLAPTOP;Initial Catalog=WeatherDWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=VMSQLServer;Initial Catalog=WeatherDWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -168,10 +168,10 @@
                 <SSIS:Property SSIS:Name="Name">CurrentData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">49</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7710A21C-8DA1-43B9-B6CA-0D435C514AD0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0DA2912E-C980-4C92-8661-692B7F516978}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -185,10 +185,10 @@
                 <SSIS:Property SSIS:Name="Name">ForecastData_3Hours</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{26680F5D-6B21-45AD-B4CB-D32C95F82241}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{700AF930-C198-4AAB-9179-F993C6B44ECD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
