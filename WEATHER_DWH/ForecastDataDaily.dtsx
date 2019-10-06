@@ -11,19 +11,20 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="ForecastDataDaily"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{6B0AF6C0-451F-422D-AE3A-040A30107906}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{AB45C4E4-EB76-4402-B8B0-27E4223E34F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{A615AB51-2D7A-4361-9964-7A6089E7EA56}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CitiID">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -60,7 +61,7 @@
         <DTS:ObjectData>
           <FEEADO
             EnumType="EnumerateRowsInFirstTable"
-            VarName="" />
+            VarName="User::CitiIDsList" />
         </DTS:ObjectData>
       </DTS:ForEachEnumerator>
       <DTS:Variables />
@@ -160,8 +161,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{F6725F2F-4088-408B-B319-0EFB58D26055}"
-          DTS:ObjectName="{F6725F2F-4088-408B-B319-0EFB58D26055}"
+          DTS:DTSID="{755E6A84-B0BA-49D9-949C-C99A369EB66C}"
+          DTS:ObjectName="{755E6A84-B0BA-49D9-949C-C99A369EB66C}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::CitiID" />
       </DTS:ForEachVariableMappings>
@@ -179,7 +180,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
-          SQLTask:SqlStatementSource="SELECT [CitiNK] FROM [WeatherDWH].[DIM].[Cities]"
+          SQLTask:SqlStatementSource="SELECT cast([CitiNK] as nvarchar) FROM [WeatherDWH].[DIM].[Cities]"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -211,10 +212,6 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="256,42"
-          Id="Package\SQL - Get Citi ID List from DIM_Cities"
-          TopLeft="247,84" />
-        <NodeLayout
           Size="219,42"
           Id="Package\Foreach Loop  - Loop through Cities\DFT - Load Daily Forcast data"
           TopLeft="29,20" />
@@ -225,6 +222,10 @@
           Size="298,159"
           Id="Package\Foreach Loop  - Loop through Cities"
           TopLeft="233,191" />
+        <NodeLayout
+          Size="256,42"
+          Id="Package\SQL - Get Citi ID List from DIM_Cities"
+          TopLeft="247,84" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="378.5,126">

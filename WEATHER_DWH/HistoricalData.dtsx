@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="HistoricalData"
   DTS:PackageType="5"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{F11217B3-2BD5-4C6F-81FA-3673AA7E021D}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{734A5AF1-B008-42F6-9D6E-F26FE5DE8065}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -295,9 +295,9 @@
                           length="50"
                           name="SunHours" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDateTime]"
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[InsertedDateTime]"
                           dataType="dbTimeStamp"
-                          name="CreatedDateTime" />
+                          name="InsertedDateTime" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
