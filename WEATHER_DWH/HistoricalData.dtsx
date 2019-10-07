@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="HistoricalData"
   DTS:PackageType="5"
-  DTS:VersionBuild="90"
-  DTS:VersionGUID="{734A5AF1-B008-42F6-9D6E-F26FE5DE8065}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{F7F6CBAA-0300-45E8-AC91-7F4EE19CF424}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1628,7 +1628,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
-          SQLTask:SqlStatementSource="SELECT lower([CitiName]) AS NameOftheCity, CitiSK, CitiNk FROM [DIM].[Cities]"
+          SQLTask:SqlStatementSource="SELECT LOWER([CitiName]) AS NameOftheCity, CitiSK, CitiNk FROM [DIM].[Cities]&#xA;  WHERE CitiSK &lt;&gt; -1"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"

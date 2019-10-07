@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="ForecastData_3Hours"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{81EA20DA-5285-4795-AD8B-C1D3295ABDD3}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{CA946D61-B5DF-4EE4-8A2D-C4D9C91E65BC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2625,7 +2625,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
-          SQLTask:SqlStatementSource="SELECT cast([CitiNK] as nvarchar) FROM [WeatherDWH].[DIM].[Cities]"
+          SQLTask:SqlStatementSource="  SELECT [CitiNK]  FROM [WeatherDWH].[DIM].[Cities]&#xA;  WHERE CitiSK &lt;&gt; -1"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"

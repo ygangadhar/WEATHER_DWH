@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="CurrentData"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{D64F545F-92D8-4A70-852B-A1B35DB302D2}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{5A864F77-A70B-41BC-93C3-2CA1882F5E8E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2513,7 +2513,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2F0B9ABE-B0F6-4174-9360-6F341960A908}"
-          SQLTask:SqlStatementSource="SELECT CONCAT(CitiName,',',CountryCode) FROM [WeatherDWH].[DIM].[Cities]"
+          SQLTask:SqlStatementSource="SELECT CONCAT(CitiName,',',CountryCode) FROM [WeatherDWH].[DIM].[Cities]&#xA;  WHERE CitiSK &lt;&gt; -1"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
