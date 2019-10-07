@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="ForecastData_3Hours"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{C6DB5118-50AA-44C1-AAF4-CD54A9558B5B}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{81EA20DA-5285-4795-AD8B-C1D3295ABDD3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
