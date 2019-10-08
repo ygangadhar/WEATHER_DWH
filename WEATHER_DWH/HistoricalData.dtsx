@@ -11,15 +11,15 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="HistoricalData"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{F7F6CBAA-0300-45E8-AC91-7F4EE19CF424}">
+  DTS:VersionBuild="95"
+  DTS:VersionGUID="{BFE65779-8B67-44E9-B976-7BC17B1D1EF7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{FFBF1471-E516-490A-AD7D-ED78F7FFB769}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CitiID">
       <DTS:VariableValue
@@ -186,6 +186,13 @@
                           externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiSK]"
                           lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiSK]" />
                         <inputColumn
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[CitiName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CitiName"
+                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiName]"
+                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiName]" />
+                        <inputColumn
                           refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[Year]"
                           cachedDataType="i4"
                           cachedName="Year"
@@ -238,13 +245,6 @@
                           cachedName="CitiID"
                           externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiNK]"
                           lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiID]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].Columns[CitiName]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="CitiName"
-                          externalMetadataColumnId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CitiName]"
-                          lineageId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\SRC - Extract Historical.Outputs[Output 0].Columns[CitiName]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -295,9 +295,9 @@
                           length="50"
                           name="SunHours" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[InsertedDateTime]"
+                          refId="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData.Inputs[OLE DB Destination Input].ExternalColumns[CreatedTimeStamp]"
                           dataType="dbTimeStamp"
-                          name="InsertedDateTime" />
+                          name="CreatedTimeStamp" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1122,7 +1122,7 @@ namespace SC_1586fcf9a6904a438b32fabab33e8088.Properties {
     <msb:CodeName>SC_1586fcf9a6904a438b32fabab33e8088</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_1586fcf9a6904a438b32fabab33e8088</msb:DisplayName>
-    <msb:ProjectId>{68C64A7D-4491-447C-9A64-E429477D5AF6}</msb:ProjectId>
+    <msb:ProjectId>{D411302D-145F-4159-82FA-954B852F62F5}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_1586fcf9a6904a438b32fabab33e8088.csproj" />
@@ -1288,7 +1288,7 @@ namespace SC_1586fcf9a6904a438b32fabab33e8088.Properties {
                         <arrayElement
                           dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAHyQmF0AAAAAAAAAAOAAIiALATAAACAAAAAIAAAAAAAARj4A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPk4nF0AAAAAAAAAAOAAIiALATAAACAAAAAIAAAAAAAARj4A
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPQ9AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1415,7 +1415,7 @@ bgAgAGkAbgBzAHQAZQBhAGQALgAAEU8AdQB0AHAAdQB0ACAAMAAADUMAaQB0AGkASQBEAAANQwBp
 AHQAaQBTAEsAACNIAGkAcwB0AG8AcgBpAGMAYQBsAEQAYQB0AGEAVQBSAEwAABFMAG8AYwBhAHQA
 aQBvAG4AAHFTAEMAXwAxADUAOAA2AGYAYwBmADkAYQA2ADkAMAA0AGEANAAzADgAYgAzADIAZgBh
 AGIAYQBiADMAMwBlADgAMAA4ADgALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
-YwBlAHMAAOOKEE70RwRDpltITdDpglcABCABAQgDIAABBSABARERBCABAQ4FIAEBEWkQBwYOCAgO
+YwBlAHMAACwTYn6gWBxOmN+lU1vKHhkABCABAQgDIAABBSABARERBCABAQ4FIAEBEWkQBwYOCAgO
 FRE9AQ4VEjkBDgYAAw4ODg4EIAEODgggAh0OHQ4RfRAQAQEVEjkBHgAVEoCFAR4AAwoBDgUVEjkB
 DgUgAgEICAggABURPQETAAUVET0BDgQgABMABiABHQ4dAwYVEkkCDgIFIAIBHBgYEAECFRKAhQEe
 ABUSgIUBHgAVEkkCHgACBSABEwAIBAABCA4DIAACBSACDg4OCSADARJRHQgSVQUgAgEIHAMHAQgG
@@ -1597,20 +1597,20 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{0F8CEA9E-EFFA-4525-9148-8E7B734C0912}"
-          DTS:ObjectName="{0F8CEA9E-EFFA-4525-9148-8E7B734C0912}"
+          DTS:DTSID="{7449EDE5-4858-4AB5-B707-DE55D771E984}"
+          DTS:ObjectName="{7449EDE5-4858-4AB5-B707-DE55D771E984}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::Location" />
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{24ABC525-46B2-456C-B693-4C67A16F4687}"
-          DTS:ObjectName="{24ABC525-46B2-456C-B693-4C67A16F4687}"
+          DTS:DTSID="{119B2C80-819E-4C8C-8F59-F92781C9BAF0}"
+          DTS:ObjectName="{119B2C80-819E-4C8C-8F59-F92781C9BAF0}"
           DTS:ValueIndex="1"
           DTS:VariableName="User::CitiSK" />
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{38ED4938-523C-4AE7-9DDB-B314FAD4C2D9}"
-          DTS:ObjectName="{38ED4938-523C-4AE7-9DDB-B314FAD4C2D9}"
+          DTS:DTSID="{DBCB9AFF-BA5A-4854-AE98-99875028D140}"
+          DTS:ObjectName="{DBCB9AFF-BA5A-4854-AE98-99875028D140}"
           DTS:ValueIndex="2"
           DTS:VariableName="User::CitiID" />
       </DTS:ForEachVariableMappings>
@@ -1761,33 +1761,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="277,42"
           Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data\OLEDB DST - Load Staging_HistoricalData"
-          TopLeft="241,204" />
+          TopLeft="247,181" />
         <EdgeLayout
           Id="Package\Foreach Loop - Loop through each City\DFT - Load Historical Data.Paths[Output 0]"
           TopLeft="371,114">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.5,90"
+              EndConnector="14.5,67"
               Start="0,0"
-              End="8.5,82.5">
+              End="14.5,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41" />
+                    End="0,29.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,41"
-                    Point2="0,45"
-                    Point3="4,45" />
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="4,33.5" />
                   <mssgle:LineSegment
-                    End="4.5,45" />
+                    End="10.5,33.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="4.5,45"
-                    Point2="8.5,45"
-                    Point3="8.5,49" />
+                    Point1="10.5,33.5"
+                    Point2="14.5,33.5"
+                    Point3="14.5,37.5" />
                   <mssgle:LineSegment
-                    End="8.5,82.5" />
+                    End="14.5,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
