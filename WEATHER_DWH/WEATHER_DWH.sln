@@ -5,13 +5,18 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "WEATHER_ETL", "WEATHER_ETL.dtproj", "{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}"
 EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "WeatherAnalysis", "..\WeatherAnalysis\WeatherAnalysis.smproj", "{8CE414BB-95B2-4C99-9E03-51BA72086E22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Development|Default = Development|Default
+		Development|x86 = Development|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|Default.ActiveCfg = Development
-		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|Default.Build.0 = Development
+		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|x86.ActiveCfg = Development
+		{1851C930-E092-4EDC-B389-D8A5A4DD5FEE}.Development|x86.Build.0 = Development
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Deploy.0 = Development|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
