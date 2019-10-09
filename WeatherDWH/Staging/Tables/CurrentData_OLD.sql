@@ -1,0 +1,27 @@
+﻿CREATE TABLE [Staging].[CurrentData_OLD] (
+    [CityID]            INT            NULL,
+    [CityName]          NVARCHAR (60)  NULL,
+    [Latitude]          NVARCHAR (16)  NULL,
+    [Longitude]         NVARCHAR (16)  NULL,
+    [CountryCode]       NVARCHAR (2)   NULL,
+    [TimeZone]          NVARCHAR (16)  NULL,
+    [Sunrise]           NVARCHAR (12)  NULL,
+    [Sunset]            NVARCHAR (12)  NULL,
+    [Cnt]               INT            NULL,
+    [WeatherID]         INT            NULL,
+    [WeatherMain]       NVARCHAR (60)  NULL,
+    [WeatherDesc]       NVARCHAR (100) NULL,
+    [WeatherIcon]       NVARCHAR (10)  NULL,
+    [Temperature]       DECIMAL (5, 2) NULL,
+    [Pressure]          SMALLINT       NULL,
+    [Humidity]          SMALLINT       NULL,
+    [Temp_Min]          DECIMAL (5, 2) NULL,
+    [Temp_Max]          DECIMAL (5, 2) NULL,
+    [Visibility]        INT            NULL,
+    [WindSpeed]         NVARCHAR (6)   NULL,
+    [WindDeg]           DECIMAL (6, 3) NULL,
+    [Cloudniess]        SMALLINT       NULL,
+    [CalulatedDateTime] NVARCHAR (16)  NULL,
+    [InsertedDateTime]  DATETIME       DEFAULT (getdate()) NULL
+);
+
