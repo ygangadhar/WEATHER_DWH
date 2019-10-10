@@ -71,6 +71,7 @@
           {
             "name": "InsertedDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "InsertedDate"
           }
         ],
@@ -109,7 +110,8 @@
           {
             "name": "Day of Month",
             "dataType": "string",
-            "sourceColumn": "Day of Month Label"
+            "sourceColumn": "Day of Month Label",
+            "sortByColumn": "DaySK"
           }
         ],
         "partitions": [
@@ -147,12 +149,14 @@
           {
             "name": "Hour of Day (12 Hour Format)",
             "dataType": "string",
-            "sourceColumn": "Hour of Day 12"
+            "sourceColumn": "Hour of Day 12",
+            "sortByColumn": "HourSK"
           },
           {
             "name": "Hour of Day",
             "dataType": "string",
-            "sourceColumn": "Hour of Day Label"
+            "sourceColumn": "Hour of Day Label",
+            "sortByColumn": "HourSK"
           },
           {
             "name": "Hourly Bucket Key",
@@ -194,20 +198,22 @@
             "sourceColumn": "MonthSK"
           },
           {
-            "name": "Month",
+            "name": "Month1",
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "Month"
           },
           {
-            "name": "Month2",
+            "name": "Month",
             "dataType": "string",
-            "sourceColumn": "Month Label"
+            "sourceColumn": "Month Label",
+            "sortByColumn": "MonthSK"
           },
           {
             "name": "Month Name",
             "dataType": "string",
-            "sourceColumn": "Month Name"
+            "sourceColumn": "Month Name",
+            "sortByColumn": "MonthSK"
           }
         ],
         "partitions": [
@@ -239,7 +245,8 @@
           {
             "name": "Year",
             "dataType": "int64",
-            "sourceColumn": "Year"
+            "sourceColumn": "Year",
+            "sortByColumn": "YearSK"
           },
           {
             "name": "Year Label",
