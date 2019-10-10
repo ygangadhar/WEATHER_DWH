@@ -10,7 +10,7 @@
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "VmSqlServer",
+            "server": "VMSqlServer",
             "database": "WeatherDWH"
           },
           "authentication": null,
@@ -30,27 +30,28 @@
     ],
     "tables": [
       {
-        "name": "CUB DimCities",
+        "name": "Cities",
         "columns": [
           {
             "name": "CitiSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CitiSK"
           },
           {
-            "name": "CitiNK",
+            "name": "Citi ID",
             "dataType": "int64",
-            "sourceColumn": "CitiNK"
+            "sourceColumn": "Citi ID"
           },
           {
-            "name": "CitiName",
+            "name": "Citi Name",
             "dataType": "string",
-            "sourceColumn": "CitiName"
+            "sourceColumn": "Citi Name"
           },
           {
-            "name": "CountryCode",
+            "name": "Country Code",
             "dataType": "string",
-            "sourceColumn": "CountryCode"
+            "sourceColumn": "Country Code"
           },
           {
             "name": "Latitude",
@@ -68,13 +69,9 @@
             "sourceColumn": "ZIPCode"
           },
           {
-            "name": "IsDeleted",
-            "dataType": "boolean",
-            "sourceColumn": "IsDeleted"
-          },
-          {
             "name": "InsertedDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "InsertedDate"
           }
         ],
@@ -96,22 +93,25 @@
         ]
       },
       {
-        "name": "CUB DimDay",
+        "name": "Day",
         "columns": [
           {
             "name": "DaySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DaySK"
           },
           {
-            "name": "DayNK",
+            "name": "Day of Month1",
             "dataType": "int64",
-            "sourceColumn": "DayNK"
+            "isHidden": true,
+            "sourceColumn": "Day of Month"
           },
           {
-            "name": "DayLabel",
+            "name": "Day of Month",
             "dataType": "string",
-            "sourceColumn": "DayLabel"
+            "sourceColumn": "Day of Month Label",
+            "sortByColumn": "DaySK"
           }
         ],
         "partitions": [
@@ -132,37 +132,43 @@
         ]
       },
       {
-        "name": "CUB DimHour",
+        "name": "Hour",
         "columns": [
           {
             "name": "HourSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "HourSK"
           },
           {
-            "name": "HourNK",
+            "name": "Hour of Day1",
             "dataType": "int64",
-            "sourceColumn": "HourNK"
+            "isHidden": true,
+            "sourceColumn": "Hour of Day"
           },
           {
-            "name": "Hour12",
+            "name": "Hour of Day (12 Hour Format)",
             "dataType": "string",
-            "sourceColumn": "Hour12"
+            "sourceColumn": "Hour of Day 12",
+            "sortByColumn": "HourSK"
           },
           {
-            "name": "Hour24",
+            "name": "Hour of Day",
             "dataType": "string",
-            "sourceColumn": "Hour24"
+            "sourceColumn": "Hour of Day Label",
+            "sortByColumn": "HourSK"
           },
           {
-            "name": "HourlyBucketKey",
+            "name": "Hourly Bucket Key",
             "dataType": "string",
-            "sourceColumn": "HourlyBucketKey"
+            "isHidden": true,
+            "sourceColumn": "Hourly Bucket Key"
           },
           {
-            "name": "HourlyBucketLabel",
+            "name": "Hourly Bucket Label",
             "dataType": "string",
-            "sourceColumn": "HourlyBucketLabel"
+            "isHidden": true,
+            "sourceColumn": "Hourly Bucket Label"
           }
         ],
         "partitions": [
@@ -183,77 +189,146 @@
         ]
       },
       {
-        "name": "CUB FCTHourly",
+        "name": "Month",
+        "columns": [
+          {
+            "name": "MonthSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthSK"
+          },
+          {
+            "name": "Month1",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month Label",
+            "sortByColumn": "MonthSK"
+          },
+          {
+            "name": "Month Name",
+            "dataType": "string",
+            "sourceColumn": "Month Name",
+            "sortByColumn": "MonthSK"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/VMSqlServer;WeatherDWH\",",
+                "    CUB_DimMonth = Source{[Schema=\"CUB\",Item=\"DimMonth\"]}[Data]",
+                "in",
+                "    CUB_DimMonth"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Year",
+        "columns": [
+          {
+            "name": "YearSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "YearSK"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sortByColumn": "YearSK"
+          },
+          {
+            "name": "Year Label",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Year Label"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/VMSqlServer;WeatherDWH\",",
+                "    CUB_DimYear = Source{[Schema=\"CUB\",Item=\"DimYear\"]}[Data]",
+                "in",
+                "    CUB_DimYear"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Hourly Data",
         "columns": [
           {
             "name": "CitiSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CitiSK"
           },
           {
             "name": "YearSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "YearSK"
           },
           {
             "name": "MonthSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSK"
           },
           {
             "name": "DaySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DaySK"
           },
           {
             "name": "HourSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "HourSK"
           },
           {
-            "name": "ForcastedTempDegC",
+            "name": "Forecasted Temperature(C)",
             "dataType": "double",
-            "sourceColumn": "ForcastedTempDegC"
+            "sourceColumn": "Forecasted Temperature(C)"
           },
           {
-            "name": "ActualTempDegC",
+            "name": "Actual Temperature(C)",
             "dataType": "double",
-            "sourceColumn": "ActualTempDegC"
+            "sourceColumn": "Actual Temperature(C)"
           },
           {
-            "name": "ForecastedMaxTempDegC",
+            "name": "Forecasted Max Temperature(C)",
             "dataType": "double",
-            "sourceColumn": "ForecastedMaxTempDegC"
+            "sourceColumn": "Forecasted Max Temperature(C)"
           },
           {
-            "name": "ForecastedRainVol_mm",
+            "name": "Forecasted Rainfall(mm)",
             "dataType": "double",
-            "sourceColumn": "ForecastedRainVol_mm"
+            "sourceColumn": "Forecasted Rainfall(mm)"
           },
           {
-            "name": "ActualRainVol_mm",
+            "name": "Actual Rainfall(mm)",
             "dataType": "double",
-            "sourceColumn": "ActualRainVol_mm"
-          },
-          {
-            "name": "ForecastedSunRise",
-            "dataType": "dateTime",
-            "sourceColumn": "ForecastedSunRise"
-          },
-          {
-            "name": "ActualSunRise",
-            "dataType": "dateTime",
-            "sourceColumn": "ActualSunRise"
-          },
-          {
-            "name": "ForecastedSunSet",
-            "dataType": "dateTime",
-            "sourceColumn": "ForecastedSunSet"
-          },
-          {
-            "name": "ActualSunSet",
-            "dataType": "dateTime",
-            "sourceColumn": "ActualSunSet"
+            "sourceColumn": "Actual Rainfall(mm)"
           }
         ],
         "partitions": [
@@ -275,54 +350,57 @@
         "measures": [
           {
             "name": "Total Actual Rainfall(mm)",
-            "expression": " ROUND(SUM('CUB FCTHourly'[ActualRainVol_mm]),3)"
+            "expression": " ROUND(SUM('Hourly Data'[Actual Rainfall(mm)]),3)"
           },
           {
             "name": "Total Forecasted Rainfall(mm)",
-            "expression": " ROUND(SUM('CUB FCTHourly'[ForecastedRainVol_mm]),3)"
+            "expression": " ROUND(SUM('Hourly Data'[Forecasted Rainfall(mm)]),3)"
           },
           {
-            "name": "Actual Mean Temperature Maximum DegC",
-            "expression": " ROUND(AVERAGE('CUB FCTHourly'[ActualTempDegC]),2)"
+            "name": "Actual Mean Max Temperature(C)",
+            "expression": " ROUND(AVERAGE('Hourly Data'[Actual Temperature(C)]),2)"
           },
           {
-            "name": "Forecasted Mean Temperature Maximum DegC",
-            "expression": " ROUND(AVERAGE('CUB FCTHourly'[ForecastedMaxTempDegC]),2)"
+            "name": "Forecasted Mean Max Temperature(C)",
+            "expression": " ROUND(AVERAGE('Hourly Data'[Forecasted Max Temperature(C)]),2)"
           }
         ]
       },
       {
-        "name": "CUB FCTMonthly",
+        "name": "Monthly Historical Data",
         "columns": [
           {
             "name": "CitiSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CitiSK"
           },
           {
             "name": "YearSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "YearSK"
           },
           {
             "name": "MonthSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSK"
           },
           {
-            "name": "TempMax_DegC",
+            "name": "Temperature Max(C)",
             "dataType": "double",
-            "sourceColumn": "TempMax_DegC"
+            "sourceColumn": "Temperature Max(C)"
           },
           {
-            "name": "TempMin_DegC",
+            "name": "Temperature Min (C)",
             "dataType": "double",
-            "sourceColumn": "TempMin_DegC"
+            "sourceColumn": "Temperature Min (C)"
           },
           {
-            "name": "RainFall_mm",
+            "name": "Rainfall(mm)",
             "dataType": "double",
-            "sourceColumn": "RainFall_mm"
+            "sourceColumn": "Rainfall(mm)"
           }
         ],
         "partitions": [
@@ -334,158 +412,81 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/VMSqlServer;WeatherDWH\",",
-                "    CUB_FCTMonthly = Source{[Schema=\"CUB\",Item=\"FCTMonthly\"]}[Data]",
+                "    CUB_FCTMonthlyHistorical = Source{[Schema=\"CUB\",Item=\"FCTMonthlyHistorical\"]}[Data]",
                 "in",
-                "    CUB_FCTMonthly"
+                "    CUB_FCTMonthlyHistorical"
               ]
             }
           }
         ],
         "measures": [
           {
-            "name": "Total Monthly Rainfall (mm)",
-            "expression": " ROUND( SUM('CUB FCTMonthly'[RainFall_mm]),3)"
+            "name": "Total Historical Monthly Rainfall(mm)",
+            "expression": " ROUND( SUM('Monthly Historical Data'[Rainfall(mm)]),3)"
           },
           {
-            "name": "Mean Monthly Temperature Maximum DegC",
-            "expression": "ROUND(AVERAGE('CUB FCTMonthly'[TempMax_DegC]),2)"
-          }
-        ]
-      },
-      {
-        "name": "CUB DimMonth",
-        "columns": [
-          {
-            "name": "MonthSK",
-            "dataType": "int64",
-            "sourceColumn": "MonthSK"
-          },
-          {
-            "name": "MonthNK",
-            "dataType": "int64",
-            "sourceColumn": "MonthNK"
-          },
-          {
-            "name": "MonthLabel",
-            "dataType": "string",
-            "sourceColumn": "MonthLabel"
-          },
-          {
-            "name": "MonthDescription",
-            "dataType": "string",
-            "sourceColumn": "MonthDescription"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/VMSqlServer;WeatherDWH\",",
-                "    CUB_DimMonth = Source{[Schema=\"CUB\",Item=\"DimMonth\"]}[Data]",
-                "in",
-                "    CUB_DimMonth"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "name": "CUB DimYear",
-        "columns": [
-          {
-            "name": "YearSK",
-            "dataType": "int64",
-            "sourceColumn": "YearSK"
-          },
-          {
-            "name": "YearNK",
-            "dataType": "int64",
-            "sourceColumn": "YearNK"
-          },
-          {
-            "name": "YearLabel",
-            "dataType": "string",
-            "sourceColumn": "YearLabel"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/VMSqlServer;WeatherDWH\",",
-                "    CUB_DimYear = Source{[Schema=\"CUB\",Item=\"DimYear\"]}[Data]",
-                "in",
-                "    CUB_DimYear"
-              ]
-            }
+            "name": "Historical Mean Monthly Temperature Max(C)",
+            "expression": "ROUND(AVERAGE('Monthly Historical Data'[Temperature Max(C)]),2)"
           }
         ]
       }
     ],
     "relationships": [
       {
-        "name": "85f8bf0c-5f96-4b00-a7b1-463894bb301c",
-        "fromTable": "CUB FCTHourly",
+        "name": "1e7ff6a4-c7c1-445f-b82d-43b698b731bd",
+        "fromTable": "Monthly Historical Data",
         "fromColumn": "CitiSK",
-        "toTable": "CUB DimCities",
+        "toTable": "Cities",
         "toColumn": "CitiSK"
       },
       {
-        "name": "5f7df04a-0161-48a4-bb78-8ddc0cf6f6b4",
-        "fromTable": "CUB FCTHourly",
+        "name": "36844d97-ab55-4f69-b724-13eb042b8fa0",
+        "fromTable": "Monthly Historical Data",
         "fromColumn": "YearSK",
-        "toTable": "CUB DimYear",
+        "toTable": "Year",
         "toColumn": "YearSK"
       },
       {
-        "name": "68c0440a-2e05-467c-9059-af209a6d13f1",
-        "fromTable": "CUB FCTHourly",
+        "name": "70e2309f-bba7-40e1-a365-e0ef94d3b6f7",
+        "fromTable": "Monthly Historical Data",
         "fromColumn": "MonthSK",
-        "toTable": "CUB DimMonth",
+        "toTable": "Month",
         "toColumn": "MonthSK"
       },
       {
-        "name": "648a71cf-a331-4f61-9a53-d648236625cc",
-        "fromTable": "CUB FCTHourly",
+        "name": "736ee633-bcb4-482d-9547-26e5e90f3942",
+        "fromTable": "Hourly Data",
+        "fromColumn": "CitiSK",
+        "toTable": "Cities",
+        "toColumn": "CitiSK"
+      },
+      {
+        "name": "13e2c3fd-12af-428d-b321-7b4611d087a2",
+        "fromTable": "Hourly Data",
+        "fromColumn": "YearSK",
+        "toTable": "Year",
+        "toColumn": "YearSK"
+      },
+      {
+        "name": "eae79ffb-779f-4e83-af28-95a5011a4018",
+        "fromTable": "Hourly Data",
+        "fromColumn": "MonthSK",
+        "toTable": "Month",
+        "toColumn": "MonthSK"
+      },
+      {
+        "name": "e1af87e1-315e-47a8-9b64-5a1d5296e483",
+        "fromTable": "Hourly Data",
         "fromColumn": "DaySK",
-        "toTable": "CUB DimDay",
+        "toTable": "Day",
         "toColumn": "DaySK"
       },
       {
-        "name": "a5bcff85-4af6-4758-81c0-37a8104416bf",
-        "fromTable": "CUB FCTHourly",
+        "name": "d6e49121-10ae-4641-a4af-437d6a3d7ab1",
+        "fromTable": "Hourly Data",
         "fromColumn": "HourSK",
-        "toTable": "CUB DimHour",
+        "toTable": "Hour",
         "toColumn": "HourSK"
-      },
-      {
-        "name": "2404be34-0180-4ed1-992e-47da61414f6e",
-        "fromTable": "CUB FCTMonthly",
-        "fromColumn": "CitiSK",
-        "toTable": "CUB DimCities",
-        "toColumn": "CitiSK"
-      },
-      {
-        "name": "a129c359-7631-40c3-b107-bcb9c047284f",
-        "fromTable": "CUB FCTMonthly",
-        "fromColumn": "YearSK",
-        "toTable": "CUB DimYear",
-        "toColumn": "YearSK"
-      },
-      {
-        "name": "3ee20e5c-043a-4969-bba1-8b7909ed54c0",
-        "fromTable": "CUB FCTMonthly",
-        "fromColumn": "MonthSK",
-        "toTable": "CUB DimMonth",
-        "toColumn": "MonthSK"
       }
     ],
     "annotations": [
