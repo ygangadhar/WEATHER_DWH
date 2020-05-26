@@ -41,12 +41,9 @@ Details and Assumptions:
    
 7) All the values are in Metrics.
 
-8) All the code is available on GitRepo and Matjaz should be able to access it. GitRepo has 3 Projects: 
-         a) Database  
-	 b) ETL Packages 
-	 c) Tabular Model 
+8) GitRepo has 3 Projects: Database, ETL Packages and Tabular Model 
 	 
-9) I did the data modelling using Tabular Model. Data in the model can be analyzed by using Excel or Power BI or any reporting tools.
+9) Data model used for this solution is Tabular Model. Data in this model can be analyzed by using Excel or Power BI or any reporting tools.
 
 
 Instruction to deploy :
