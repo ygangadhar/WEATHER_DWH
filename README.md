@@ -24,9 +24,6 @@ Also, please bear in mind that it needs to be quite changeable in the future, as
 
 We need to be able to connect to your DWH / BI view and reading data through MS SQL.
 
-Assumptions and instructions to deploy:
----------------------------------------
-
 Details and Assumptions:
 --------------------------
 
@@ -38,23 +35,18 @@ Details and Assumptions:
 
 4) Current Weather and 5 Days/3Hour forecast data are extracted for every 3 hours (i.e. 00,03,06,09,12,15,18,21 Hours).
 
-5) Per Day data and Per Month data are aggregates of data extracted. (Current Weather data API and 5 Day/3Hour Forecast API are available for free on https://openweathermap.org/. 
-   So, I developed the Data model based on those 2 API). 
+5) Per Day data and Per Month data are aggregates of data extracted. (Current Weather data API and 5 Day/3Hour Forecast API are     available for free on https://openweathermap.org/. So, the Data model based on those 2 API). 
 
-   
 6) Historical Data loaded from https://data.gov.uk is shown in the model as Historical Monthly data
    
 7) All the values are in Metrics.
 
 8) All the code is available on GitRepo and Matjaz should be able to access it. GitRepo has 3 Projects: 
-     1) Database  
-	 2) ETL Packages 
-	 3) Tabular Model 
+         a) Database  
+	 b) ETL Packages 
+	 c) Tabular Model 
 	 
-9) I did the data modelling in Tabular Model. Data in the model can be analyzed by using Excel or Power BI or any reporting tools.
-
-10) The same code is available and running on AZURE Virtual Machine. I am injecting Current, Forecast data and processing Model for every 3 hours using SQL Agent jobs. 
-    You can Remotely login to it by using the details provided in the mail.
+9) I did the data modelling using Tabular Model. Data in the model can be analyzed by using Excel or Power BI or any reporting tools.
 
 
 Instruction to deploy :
