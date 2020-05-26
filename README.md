@@ -1,4 +1,4 @@
-# WEATHER_DWH
+# WEATHER_DWH (Code challenge for one of the position applied)
 
 Implementation of Weather DWH
 
@@ -19,10 +19,6 @@ Weather Dimensions of analysis are : per month, per day (current & forecast data
 Data should be accessible by BI Analyst with a standard (ANSI) SQL
 
 Data structure should be clear and easy (self-explanatory) to understand by a BI Analyst
-
-The design of the solution is completely up to you.
-
-However, as this is a coding exercise, if you say 'ETL xyz' or copy the example of API calls, this doesn't really help us assess your coding.
 
 Also, please bear in mind that it needs to be quite changeable in the future, as the Product Owner has big plans in this space!
 
